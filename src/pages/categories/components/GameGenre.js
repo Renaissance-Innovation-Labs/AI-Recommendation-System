@@ -2,13 +2,13 @@ import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
 
-const MusicGenre = (props) => {
+const GameGenre = (props) => {
 
     // const [musicGenreData, setMusicGenreData] = useState([
     //     'jazz', 'jazez', 'hiphop', 'rythm', 'blues', 'afrobeat', 'soulmusic', 'gospel', 'metal', 'rock'
     // ])
-    const musicGenreData =[
-        'jazz', 'classical', 'hiphop', 'rythm&blues', 'pop', 'afrobeat', 'Reggae', 'gospel', 'metal', 'rock'
+    const GameGenreData =[
+        'Action', 'Adventure', 'Sports', 'Horror', 'Racing', 'Puzzle', 'Fighting', 'Action Adventure', 'Simulation', 'Platformer'
     ]
 
     const [arr, setArr] = useState([]);
@@ -28,16 +28,16 @@ const MusicGenre = (props) => {
 
 
 
-    const musicChangeHandler = (event) => {
+    const GameChangeHandler = (event) => {
         event.preventDefault();
         const selectedIndex = event.target.dataset.index;   
        
 
         if (selectedIndex !== undefined) {
             const index = parseInt(selectedIndex, 10);
-            if (!isNaN(index) && index >= 0 && index < musicGenreData.length) {
+            if (!isNaN(index) && index >= 0 && index < GameGenreData.length) {
                 // Check if the index is already in the arr
-                if (arr.includes(musicGenreData[index])) {
+                if (arr.includes(GameGenreData[index])) {
                     setErrorMessage('Genre already selected.'); // Display a message if already selected.
                 }
                 else {
@@ -46,7 +46,7 @@ const MusicGenre = (props) => {
                         setErrorMessage('You can only select up to 3 genres.');
                         console.log(errorMessage)
                     } else {
-                        const selectedGenre = musicGenreData[index];
+                        const selectedGenre = GameGenreData[index];
                         arr.push(selectedGenre);
                         setArr([...arr]);
                         // console.log(arr)
@@ -69,7 +69,7 @@ const MusicGenre = (props) => {
             console.log(errorMessage)
         } else {
             console.log(arr);
-            props.onHandToggleModal()
+            props.onHandToggleGameModal()
         }
         if (errorMessage) {
             setErrorMessage('')
@@ -93,13 +93,13 @@ const MusicGenre = (props) => {
 
 
             <div className="bg-white w-80 h-auto py-6 fixed top-44 m-auto z-[1000] left-0 right-0 md:w-[600px] opacity-100">
-                    <img onClick={props.onHandToggleModal} src={closeicon} alt="close icon" className="w-12 h-12 absolute top-3 right-0 cursor-pointer" />
-                <form onSubmit={musicChangeHandler} className="w-full flex flex-col h-full justify-end items-center gap-3 mt-12">
+                    <img onClick={props.onHandToggleGameModal} src={closeicon} alt="close icon" className="w-12 h-12 absolute top-3 right-0 cursor-pointer" />
+                <form onSubmit={GameChangeHandler} className="w-full flex flex-col h-full justify-end items-center gap-3 mt-12">
 
                     
                     
                     {/* Display arr */}
-                    <h1 className="text-md font-bold max-w-xs px-2 text-center md:text-xl md:p-3">Pick Your Favorite Genres: What Tunes Ignite Your Soul?</h1>
+                    <h1 className="text-md font-bold max-w-xs px-2 text-center md:text-xl md:p-3">Pick Your Favorite Genres: </h1>
                     <div className="px-6 flex flex-col">
                        
                       {/* Always render an empty placeholder */}
@@ -110,12 +110,12 @@ const MusicGenre = (props) => {
                         </div>
                         
                         <div className="flex flex-row flex-wrap gap-1 md:gap-3 md:mt-3">
-                        {musicGenreData.map((music, index) => (
-                            <button onClick={musicChangeHandler} data-index={index} key={index}
+                        {GameGenreData.map((game, index) => (
+                            <button onClick={GameChangeHandler} data-index={index} key={index}
                             className={`rounded-lg border-2 border-solid border-slate-900 font-bold text-green-1 text-md px-3 py-2 md:px-8 md:py-2 ${
                                 clickedButtons.includes(index) ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
                             }`}
-                            disabled={arr.includes(index) || arr.length >= 4}>{music}</button>
+                            disabled={arr.includes(index) || arr.length >= 4}>{game}</button>
                             
                         ))}
                         </div>
@@ -125,7 +125,7 @@ const MusicGenre = (props) => {
                         type="submit"
                         onClick={handleButtonClick}
                         disabled={buttonClicked || arr.length < 2}
-                    className="rounded-lg text-white bg-black font-bold text-md px-3 py-2 self-end mx-3 md:px-8 md:py-2">Submit Genres</button>
+                    className="rounded-lg bg-black text-white font-bold text-md px-3 py-2 md:px-8 md:py-2">Submit Genres</button>
                 </form>
             </div>   
             
@@ -137,4 +137,4 @@ const MusicGenre = (props) => {
     )
 }
 
-export default MusicGenre
+export default GameGenre
