@@ -36,25 +36,30 @@ const MusicGenre = (props) => {
         if (selectedIndex !== undefined) {
             const index = parseInt(selectedIndex, 10);
             if (!isNaN(index) && index >= 0 && index < musicGenreData.length) {
-                // Check if the index is already in the arr
                 if (arr.includes(musicGenreData[index])) {
-                    setErrorMessage('Genre already selected.'); // Display a message if already selected.
-                }
-                else {
-                    // If it's not in arr and the limit is not reached, add it
-                    if (arr.length >= 3) {
-                        setErrorMessage('You can only select up to 3 genres.');
-                        console.log(errorMessage)
-                    } else {
-                        const selectedGenre = musicGenreData[index];
-                        arr.push(selectedGenre);
-                        setArr([...arr]);
-                        // console.log(arr)
-                        setClickedButtons([...clickedButtons, index]);
-                        // setSelectionsMade(true);
-                    }
+                   
+                const updatedArr = arr.filter((genre) => genre !== musicGenreData[index]);
+                    setArr(updatedArr);
+                    console.log(updatedArr)
+                setErrorMessage('');
+                // setErrorMessage('Genre already selected.'); // Display a message if already selected.
+            }
+            else {
+                // If it's not in arr and the limit is not reached, add it
+                if (arr.length >= 3) {
+                    setErrorMessage('You can only select up to 3 genres.');
+                    console.log(errorMessage)
+                } else {
+                    // const selectedGenre = musicGenreData[index];
+                    // arr.push(selectedGenre);
+                    setArr([...arr, musicGenreData[index]]);
+                    // console.log(arr)
+                    setClickedButtons([...clickedButtons, index]);
+                    // setSelectionsMade(true);
                 }
             }
+            }
+            // console.log(updatedArr)
         }
     }
 
@@ -111,11 +116,22 @@ const MusicGenre = (props) => {
                         
                         <div className="flex flex-row flex-wrap gap-1 md:gap-3 md:mt-3">
                         {musicGenreData.map((music, index) => (
-                            <button onClick={musicChangeHandler} data-index={index} key={index}
-                            className={`rounded-lg border-2 border-solid border-slate-900 font-bold text-green-1 text-md px-3 py-2 md:px-8 md:py-2 ${
-                                clickedButtons.includes(index) ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
+                            <button
+                            //     onClick={musicChangeHandler}
+                            //     data-index={index} key={index}
+                            // className={`rounded-lg border-2 border-solid border-slate-900 font-bold text-green-1 text-md px-3 py-2 md:px-8 md:py-2 ${
+                            //     clickedButtons.includes(index) ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
+                            // }`}
+                                
+                            onClick={musicChangeHandler}
+                            data-index={index}
+                            key={index}
+                            className={`rounded-lg border-2 border-solid border-slate-900 text-md px-3 py-2 md:px-8 md:py-2 ${
+                                arr.includes(musicGenreData[index])
+                                    ? 'bg-black text-white'
+                                    : 'hover:bg-black hover:text-white'
                             }`}
-                            disabled={arr.includes(index) || arr.length >= 4}>{music}</button>
+                            disabled={arr.length >= 4}>{music}</button>
                             
                         ))}
                         </div>

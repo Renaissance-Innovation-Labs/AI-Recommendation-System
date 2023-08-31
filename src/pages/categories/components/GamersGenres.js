@@ -2,7 +2,7 @@ import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
 
-const GameGenre = (props) => {
+const GamersGenres = (props) => {
 
     // const [musicGenreData, setMusicGenreData] = useState([
     //     'jazz', 'jazez', 'hiphop', 'rythm', 'blues', 'afrobeat', 'soulmusic', 'gospel', 'metal', 'rock'
@@ -28,7 +28,7 @@ const GameGenre = (props) => {
 
 
 
-    const gameChangeHandler = (event) => {
+    const GameChangeHandler = (event) => {
         event.preventDefault();
         const selectedIndex = event.target.dataset.index;   
        
@@ -36,27 +36,25 @@ const GameGenre = (props) => {
         if (selectedIndex !== undefined) {
             const index = parseInt(selectedIndex, 10);
             if (!isNaN(index) && index >= 0 && index < GameGenreData.length) {
+                // Check if the index is already in the arr
                 if (arr.includes(GameGenreData[index])) {
-                   
-                const updatedArr = arr.filter((genre) => genre !== GameGenreData[index]);
-                    setArr(updatedArr);
-                    console.log(updatedArr)
-                setErrorMessage('');
-                // setErrorMessage('Genre already selected.'); // Display a message if already selected.
-            }
-            else {
-                // If it's not in arr and the limit is not reached, add it
-                if (arr.length >= 3) {
-                    setErrorMessage('You can only select up to 3 genres.');
-                    console.log(errorMessage)
-                } else {
-                    setArr([...arr, GameGenreData[index]]);
-                    setClickedButtons([...clickedButtons, index]);
-                    // setSelectionsMade(true);
+                    setErrorMessage('Genre already selected.'); // Display a message if already selected.
+                }
+                else {
+                    // If it's not in arr and the limit is not reached, add it
+                    if (arr.length >= 3) {
+                        setErrorMessage('You can only select up to 3 genres.');
+                        console.log(errorMessage)
+                    } else {
+                        const selectedGenre = GameGenreData[index];
+                        arr.push(selectedGenre);
+                        setArr([...arr]);
+                        // console.log(arr)
+                        setClickedButtons([...clickedButtons, index]);
+                        // setSelectionsMade(true);
+                    }
                 }
             }
-            }
-            // console.log(updatedArr)
         }
     }
 
@@ -96,12 +94,12 @@ const GameGenre = (props) => {
 
             <div className="bg-white w-80 h-auto py-6 fixed top-44 m-auto z-[1000] left-0 right-0 md:w-[600px] opacity-100">
                     <img onClick={props.onHandToggleGameModal} src={closeicon} alt="close icon" className="w-12 h-12 absolute top-3 right-0 cursor-pointer" />
-                <form onSubmit={gameChangeHandler} className="w-full flex flex-col h-full justify-end items-center gap-3 mt-12">
+                <form onSubmit={GameChangeHandler} className="w-full flex flex-col h-full justify-end items-center gap-3 mt-12">
 
                     
                     
                     {/* Display arr */}
-                    <h1 className="text-md font-bold max-w-xs px-2 text-center md:text-xl md:p-3">Pick Your Favorite Genres: What Tunes Ignite Your Soul?</h1>
+                    <h1 className="text-md font-bold max-w-xs px-2 text-center md:text-xl md:p-3">Pick Your Favorite Genres: </h1>
                     <div className="px-6 flex flex-col">
                        
                       {/* Always render an empty placeholder */}
@@ -112,17 +110,12 @@ const GameGenre = (props) => {
                         </div>
                         
                         <div className="flex flex-row flex-wrap gap-1 md:gap-3 md:mt-3">
-                        {GameGenreData.map((music, index) => (
-                            <button
-                            onClick={gameChangeHandler}
-                            data-index={index}
-                            key={index}
-                            className={`rounded-lg border-2 border-solid border-slate-900 text-md px-3 py-2 md:px-8 md:py-2 ${
-                                arr.includes(GameGenreData[index])
-                                    ? 'bg-black text-white'
-                                    : 'hover:bg-black hover:text-white'
+                        {GameGenreData.map((game, index) => (
+                            <button onClick={GameChangeHandler} data-index={index} key={index}
+                            className={`rounded-lg border-2 border-solid border-slate-900 font-bold text-green-1 text-md px-3 py-2 md:px-8 md:py-2 ${
+                                clickedButtons.includes(index) ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
                             }`}
-                            disabled={arr.length >= 4}>{music}</button>
+                            disabled={arr.includes(index) || arr.length >= 4}>{game}</button>
                             
                         ))}
                         </div>
@@ -132,7 +125,7 @@ const GameGenre = (props) => {
                         type="submit"
                         onClick={handleButtonClick}
                         disabled={buttonClicked || arr.length < 2}
-                    className="rounded-lg text-white bg-black font-bold text-md px-3 py-2 self-end mx-3 md:px-8 md:py-2">Submit Genres</button>
+                    className="rounded-lg bg-black text-white font-bold text-md px-3 py-2 md:px-8 md:py-2">Submit Genres</button>
                 </form>
             </div>   
             
@@ -144,4 +137,4 @@ const GameGenre = (props) => {
     )
 }
 
-export default GameGenre
+export default GamersGenres
