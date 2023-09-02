@@ -11,7 +11,7 @@ const MusicGenre = (props) => {
         'jazz', 'classical', 'hiphop', 'rythm&blues', 'pop', 'afrobeat', 'Reggae', 'gospel', 'metal', 'rock'
     ]
 
-    const [arr, setArr] = useState([]);
+    const [songArr, setSongArr] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
@@ -36,23 +36,23 @@ const MusicGenre = (props) => {
         if (selectedIndex !== undefined) {
             const index = parseInt(selectedIndex, 10);
             if (!isNaN(index) && index >= 0 && index < musicGenreData.length) {
-                if (arr.includes(musicGenreData[index])) {
+                if (songArr.includes(musicGenreData[index])) {
                    
-                const updatedArr = arr.filter((genre) => genre !== musicGenreData[index]);
-                    setArr(updatedArr);
+                const updatedArr = songArr.filter((genre) => genre !== musicGenreData[index]);
+                    setSongArr(updatedArr);
                     console.log(updatedArr)
                 setErrorMessage('');
                 // setErrorMessage('Genre already selected.'); // Display a message if already selected.
             }
             else {
                 // If it's not in arr and the limit is not reached, add it
-                if (arr.length >= 3) {
+                if (songArr.length >= 3) {
                     setErrorMessage('You can only select up to 3 genres.');
                     console.log(errorMessage)
                 } else {
                     // const selectedGenre = musicGenreData[index];
                     // arr.push(selectedGenre);
-                    setArr([...arr, musicGenreData[index]]);
+                    setSongArr([...songArr, musicGenreData[index]]);
                     // console.log(arr)
                     setClickedButtons([...clickedButtons, index]);
                     // setSelectionsMade(true);
@@ -68,12 +68,12 @@ const MusicGenre = (props) => {
         event.preventDefault()
       
         setButtonClicked(true);
-        if (arr.length < 2) {
+        if (songArr.length < 2) {
             setErrorMessage('please select the genres you like');
            
             console.log(errorMessage)
         } else {
-            console.log(arr);
+            console.log(songArr);
             props.onHandToggleModal()
         }
         if (errorMessage) {
@@ -117,21 +117,16 @@ const MusicGenre = (props) => {
                         <div className="flex flex-row flex-wrap gap-1 md:gap-3 md:mt-3">
                         {musicGenreData.map((music, index) => (
                             <button
-                            //     onClick={musicChangeHandler}
-                            //     data-index={index} key={index}
-                            // className={`rounded-lg border-2 border-solid border-slate-900 font-bold text-green-1 text-md px-3 py-2 md:px-8 md:py-2 ${
-                            //     clickedButtons.includes(index) ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
-                            // }`}
                                 
                             onClick={musicChangeHandler}
                             data-index={index}
                             key={index}
                             className={`rounded-lg border-2 border-solid border-slate-900 text-md px-3 py-2 md:px-8 md:py-2 ${
-                                arr.includes(musicGenreData[index])
+                                songArr.includes(musicGenreData[index])
                                     ? 'bg-black text-white'
-                                    : 'hover:bg-black hover:text-white'
+                                    : 'hover:bg-primary-gray hover:text-black'
                             }`}
-                            disabled={arr.length >= 4}>{music}</button>
+                            disabled={songArr.length >= 4}>{music}</button>
                             
                         ))}
                         </div>
@@ -140,7 +135,7 @@ const MusicGenre = (props) => {
                     <button
                         type="submit"
                         onClick={handleButtonClick}
-                        disabled={buttonClicked || arr.length < 2}
+                        disabled={buttonClicked || songArr.length < 2}
                     className="rounded-lg text-white bg-black font-bold text-md px-3 py-2 self-end mx-3 md:px-8 md:py-2">Submit Genres</button>
                 </form>
             </div>   
