@@ -1,6 +1,7 @@
 import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
+import { useMusicGenre } from "../../../useContext/musicGenreContext"
 
 const MusicGenre = (props) => {
     const musicGenreData =[
@@ -11,6 +12,8 @@ const MusicGenre = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
+
+    const { setGenreList } = useMusicGenre()
 
 
 
@@ -56,6 +59,7 @@ const MusicGenre = (props) => {
             console.log(errorMessage)
         } else {
             console.log(songArr);
+            setGenreList(songArr)
             props.onHandToggleModal()
         }
         if (errorMessage) {

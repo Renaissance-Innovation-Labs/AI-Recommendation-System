@@ -6,12 +6,7 @@ import { useMovieGenre } from '../../useContext/movieGenreContext';
 const MovieRecommendations = () => {
   const [recommendations, setRecommendations] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
   const { movieArr } = useMovieGenre()
-
-  // this is the syntax for sending the message as a string inside the prompt
-// const musicArr = songArr.join(', ')
-  // const movieArr = ["Action", "Romance", "Commedy"]
   const filmArr = movieArr.join(', ')
 
   // Function to generate a prompt

@@ -1,8 +1,6 @@
-// import React, { useEffect, useState } from 'react';
 import React, { useState } from 'react';
 import { openai } from '../../config/openaiConfig';
-// import { MusicGenreContext } from '../../useContext/musicGenreContext.js';
-// import { useContext } from 'react';
+import { useMusicGenre } from '../../useContext/musicGenreContext';
 
 const SongRecommendations = () => {
   const [recommendations, setRecommendations] = useState('');
@@ -12,7 +10,8 @@ const SongRecommendations = () => {
 // const musicArr = songArr.join(', ')
 // const { songArr } = useContext(MusicGenreContext);
   
-  const songArr = ["blues", "jazz", "hiphop"]
+  const { songArr } = useMusicGenre()        
+  // const songArr = ["blues", "jazz", "hiphop"]
   const musicArr = songArr.join(', ')
   
 
@@ -34,9 +33,9 @@ const SongRecommendations = () => {
         temperature: 0.6,
       });
 
-      console.log(response)
+      // console.log(response)
       console.log(musicArr)
-      // console.log(response.choices[0].text);
+      console.log(response.choices[0].text);
      
       // when recommendations are separated by line breaks
       setRecommendations(response.choices[0].text.split('\n')); 
@@ -53,7 +52,7 @@ const SongRecommendations = () => {
   return (
     <div>
       <h1>My Music Playlist</h1>
-      <button className='bg-black text-white' onClick={()=>(console.log([musicArr]))}>show music Array</button>
+      <button className='bg-gray-700 text-white p-2' onClick={()=>(console.log([musicArr]))}>show music Array</button>
 
       {/* Conditionally render a loading indicator */}
       {isLoading ? (
@@ -61,7 +60,10 @@ const SongRecommendations = () => {
       ) : (
         <div>
           {/* Render your content when not loading */}
-          <button className='bg-black text-white w-fit p-3 my-3' onClick={fetchSongRecommendations}>Fetch My Music Lists</button>
+            <button className='bg-gray-700 text-white w-fit p-3 my-3'
+              onClick={fetchSongRecommendations}
+              disabled={musicArr.length === 0}
+            >Fetch My Music Lists</button>
           <div>
               <ul>
 

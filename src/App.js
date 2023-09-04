@@ -21,8 +21,11 @@ import NotFound from './pages/NotFound';
 import RootLayout from './layouts/RootLayout';
 import HelpLayout from './layouts/HelpLayout';
 
+//useContext
 import React, { useContext } from 'react';
 import { MovieGenreProvider } from './useContext/movieGenreContext';
+import { MusicGenreProvider } from './useContext/musicGenreContext';
+import { GameGenreProvider } from './useContext/gameGenreContext';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,8 +47,12 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-     <MovieGenreProvider>
-        <RouterProvider router={router} />
+      <MovieGenreProvider>
+        <MusicGenreProvider>
+          <GameGenreProvider>
+          <RouterProvider router={router} />
+          </GameGenreProvider>
+        </MusicGenreProvider>
       </MovieGenreProvider>
     </>
   );

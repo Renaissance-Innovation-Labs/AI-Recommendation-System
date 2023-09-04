@@ -1,32 +1,30 @@
-// import React, { useEffect, useState } from 'react';
 import React, { useState } from 'react';
 import { openai } from '../../config/openaiConfig';
+import { useGameGenre } from '../../useContext/gameGenreContext';
 
 const GameRecommendations = () => {
   const [recommendations, setRecommendations] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // this is the syntax for sending the message as a string inside the prompt
-// const musicArr = songArr.join(', ')
-  
-  const songArr = ["action", "racing", "adventure"]
-  const musicArr = songArr.join(', ')
+  const { gameArr } = useGameGenre()
+  // const songArr = ["action", "racing", "adventure"]
+  const gamesArr = gameArr.join(', ')
 
   // Function to generate a prompt
-  function generatePrompt(musicArr) {
-    return `Suggest ten games with the year they were released based on ${musicArr}`;
+  function generatePrompt(gamesArr) {
+    return `Suggest ten games with the year they were released based on ${gamesArr}`;
   }
 
   // Function to fetch song recommendations
   async function fetchSongRecommendations() {
     // Set loading state to true before making the request
     setIsLoading(true); 
-    console.log("elo")
+    console.log([gamesArr])
 
     try {
       const response = await openai.completions.create({
         model: 'text-davinci-003',
-        prompt: generatePrompt(musicArr),
+        prompt: generatePrompt(gamesArr),
         max_tokens: 150,
         temperature: 0.6,
       });
@@ -56,7 +54,10 @@ const GameRecommendations = () => {
       ) : (
         <div>
           {/* Render your content when not loading */}
-          <button className='bg-black text-white w-fit p-3 my-3' onClick={fetchSongRecommendations}>Fetch My Favorite Games</button>
+            <button className='bg-black text-white w-fit p-3 my-3'
+              onClick={fetchSongRecommendations}
+              disabled={gamesArr.length === 0}
+            >Fetch My Favorite Games</button>
           <div>
               <ul>
 
