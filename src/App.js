@@ -1,47 +1,48 @@
-// import logo from './logo.svg';
-import './App.css';
-// import SongRecommendations from './pages/help/SongRecommendations';
+import React from 'react';
 import {
   createBrowserRouter,
   Route,
   createRoutesFromElements,
-  RouterProvider
-} from 'react-router-dom'
+  RouterProvider,
+} from 'react-router-dom';
 
-//pages
-import Home from './pages/Home'
-import About from './pages/About'
-// import SongRecommendations from './pages/help/SongRecommendations';
+
+// Import your components
+import Home from './pages/Home';
+import About from './pages/About';
+import SongRecommendations from './pages/help/SongRecommendations';
+import GameRecommendations from './pages/help/GameRecommendations';
+import MovieRecommendations from './pages/help/MovieRecommendations.js';
 import NotFound from './pages/NotFound';
 
-//Layouts
-import RootLayout from './layouts/RootLayout'
+
+// Layouts
+import RootLayout from './layouts/RootLayout';
 import HelpLayout from './layouts/HelpLayout';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<RootLayout />}>
-        {/* <Route index element={<RootLayout />} /> */}
-      <Route path='home' element={<Home />} />
-     
-      <Route path='About' element={<About />} />
+    <Route path="/" element={<RootLayout />}>
+      <Route path="home" element={<Home />} />
+      <Route path="About" element={<About />} />
 
-       <Route path='help' element={<HelpLayout />} >
-        {/* <Route path='SongRecommendations' element={<SongRecommendations />} /> */}
+      <Route path="help" element={<HelpLayout />}>
+        <Route path="SongRecommendations" element={<SongRecommendations />} />
+        <Route path="GameRecommendations" element={<GameRecommendations />} />
+        <Route path="MovieRecommendations" element={<MovieRecommendations />} />
       </Route>
-     
-      <Route path= "*" element={<NotFound />} />
+
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
-)
-
+);
 
 function App() {
   return (
     <>
-    <RouterProvider router={router} />
+     
+        <RouterProvider router={router} />
     </>
-   
   );
 }
 

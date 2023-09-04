@@ -1,30 +1,27 @@
 // import React, { useEffect, useState } from 'react';
 import React, { useState } from 'react';
 import { openai } from '../../config/openaiConfig';
-// import { MusicGenreContext } from '../../useContext/musicGenreContext.js';
-// import { useContext } from 'react';
 
-const SongRecommendations = () => {
+const GameRecommendations = () => {
   const [recommendations, setRecommendations] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   // this is the syntax for sending the message as a string inside the prompt
 // const musicArr = songArr.join(', ')
-// const { songArr } = useContext(MusicGenreContext);
   
-  const songArr = ["blues", "jazz", "hiphop"]
+  const songArr = ["action", "racing", "adventure"]
   const musicArr = songArr.join(', ')
-  
 
+  // Function to generate a prompt
   function generatePrompt(musicArr) {
-    return `Suggest ten songs based on ${musicArr}`;
+    return `Suggest ten games with the year they were released based on ${musicArr}`;
   }
 
   // Function to fetch song recommendations
   async function fetchSongRecommendations() {
     // Set loading state to true before making the request
     setIsLoading(true); 
-    console.log([musicArr])
+    console.log("elo")
 
     try {
       const response = await openai.completions.create({
@@ -35,8 +32,7 @@ const SongRecommendations = () => {
       });
 
       console.log(response)
-      console.log(musicArr)
-      // console.log(response.choices[0].text);
+      console.log(response.choices[0].text);
      
       // when recommendations are separated by line breaks
       setRecommendations(response.choices[0].text.split('\n')); 
@@ -52,8 +48,7 @@ const SongRecommendations = () => {
 
   return (
     <div>
-      <h1>My Music Playlist</h1>
-      <button className='bg-black text-white' onClick={()=>(console.log([musicArr]))}>show music Array</button>
+      <h1>My GameLists Playlist</h1>
 
       {/* Conditionally render a loading indicator */}
       {isLoading ? (
@@ -61,7 +56,7 @@ const SongRecommendations = () => {
       ) : (
         <div>
           {/* Render your content when not loading */}
-          <button className='bg-black text-white w-fit p-3 my-3' onClick={fetchSongRecommendations}>Fetch My Music Lists</button>
+          <button className='bg-black text-white w-fit p-3 my-3' onClick={fetchSongRecommendations}>Fetch My Favorite Games</button>
           <div>
               <ul>
 
@@ -74,7 +69,7 @@ const SongRecommendations = () => {
                     <li className='border-b-2 border-b-solid py-1 text-gray-700' key={index}>{recommendation}</li>
                   ))
               ) : (
-                <li>No Music Lists available For Now, Wanna See Playlist? Click Button Above</li>
+                <li>No Game Data available For Now, Wanna See Playlist? Click Button Above</li>
               )}
                 
               </ul>
@@ -92,4 +87,4 @@ const SongRecommendations = () => {
 //   useEffect(() => {
 // }
 
-export default SongRecommendations;
+export default GameRecommendations;

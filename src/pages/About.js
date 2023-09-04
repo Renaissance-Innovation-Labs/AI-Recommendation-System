@@ -3,7 +3,7 @@ const About = () => {
     
     return(
         <>
-        <div className='w-full mx-auto items-center text-center text-xl font-bold space-y-3 mt-12 max-w-sm md:max-w-4xl md:mt-36 md:text-4xl'>
+                <div className='w-full mx-auto items-center text-center text-xl font-bold space-y-3 mt-12 max-w-sm md:max-w-4xl md:mt-36 md:text-4xl'>
                     <h1>
                     Welcome to a World of Tailored Suggestions
                     Revolutionize Your Choices with Recom-Zen-Guide

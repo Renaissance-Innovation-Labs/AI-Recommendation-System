@@ -5,6 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans'],
+        'nunito-sans': ['Nunito Sans', 'sans'],
+        roboto: ['Roboto', 'sans'],
+      },
       colors: {
         'primary-green': '#125252',
         'primary-gray': '#727272',

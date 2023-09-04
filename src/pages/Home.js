@@ -1,5 +1,6 @@
 import GameCategoryComp from './categories/GameCategoryComp'
 import MusicCategoryComp from './categories/MusicCategoryComp'
+// import MusicCategoryContainer from './categories/musicCategoryContainer'
 import MovieCategoryComp from './categories/MovieCategoryComp'
 import { Link } from 'react-router-dom'
 
@@ -8,7 +9,7 @@ import { Link } from 'react-router-dom'
 const Home = () => {
     
     return(
-        <div>
+        <div className='font-Roboto '>
             {/* <h2>HomePage</h2> */}
 
 

@@ -11,20 +11,10 @@ const GameGenre = (props) => {
         'Action', 'Adventure', 'Sports', 'Horror', 'Racing', 'Puzzle', 'Fighting', 'Action Adventure', 'Simulation', 'Platformer'
     ]
 
-    const [arr, setArr] = useState([]);
+    const [gameArr, setGameArr] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
-    // const [selectionsMade, setSelectionsMade] = useState(false);
-    // const [modalOpen, setModalOpen] = useState(false);
-
-
-   
-    
-    // const musicChangedHandle = (event) => {
-    //     event.preventDefault()
-    //     console.log(event.target.value, "HELLO")
-    // }
 
 
 
@@ -36,21 +26,20 @@ const GameGenre = (props) => {
         if (selectedIndex !== undefined) {
             const index = parseInt(selectedIndex, 10);
             if (!isNaN(index) && index >= 0 && index < GameGenreData.length) {
-                if (arr.includes(GameGenreData[index])) {
+                if (gameArr.includes(GameGenreData[index])) {
                    
-                const updatedArr = arr.filter((genre) => genre !== GameGenreData[index]);
-                    setArr(updatedArr);
+                const updatedArr = gameArr.filter((genre) => genre !== GameGenreData[index]);
+                    setGameArr(updatedArr);
                     console.log(updatedArr)
                 setErrorMessage('');
-                // setErrorMessage('Genre already selected.'); // Display a message if already selected.
             }
             else {
                 // If it's not in arr and the limit is not reached, add it
-                if (arr.length >= 3) {
+                if (gameArr.length >= 3) {
                     setErrorMessage('You can only select up to 3 genres.');
                     console.log(errorMessage)
                 } else {
-                    setArr([...arr, GameGenreData[index]]);
+                    setGameArr([...gameArr, GameGenreData[index]]);
                     setClickedButtons([...clickedButtons, index]);
                     // setSelectionsMade(true);
                 }
@@ -65,17 +54,19 @@ const GameGenre = (props) => {
         event.preventDefault()
       
         setButtonClicked(true);
-        if (arr.length < 2) {
+        if (gameArr.length < 2) {
             setErrorMessage('please select the genres you like');
            
             console.log(errorMessage)
-        } else {
-            console.log(arr);
-            props.onHandToggleGameModal()
         }
         if (errorMessage) {
             setErrorMessage('')
         }
+        else {
+            console.log(gameArr);
+            props.onHandToggleGameModal()
+        }
+       
 
         // setModalOpen(false);
     }
@@ -101,7 +92,7 @@ const GameGenre = (props) => {
                     
                     
                     {/* Display arr */}
-                    <h1 className="text-md font-bold max-w-xs px-2 text-center md:text-xl md:p-3">Pick Your Favorite Genres: What Tunes Ignite Your Soul?</h1>
+                    <h1 className="text-md font-bold max-w-xs px-2 w-full text-center md:text-xl md:p-3">Choose your virtual adventure</h1>
                     <div className="px-6 flex flex-col">
                        
                       {/* Always render an empty placeholder */}
@@ -112,17 +103,17 @@ const GameGenre = (props) => {
                         </div>
                         
                         <div className="flex flex-row flex-wrap gap-1 md:gap-3 md:mt-3">
-                        {GameGenreData.map((music, index) => (
+                        {GameGenreData.map((game, index) => (
                             <button
                             onClick={gameChangeHandler}
                             data-index={index}
                             key={index}
                             className={`rounded-lg border-2 border-solid border-slate-900 text-md px-3 py-2 md:px-8 md:py-2 ${
-                                arr.includes(GameGenreData[index])
-                                    ? 'bg-black text-white'
-                                    : 'hover:bg-black hover:text-white'
+                                gameArr.includes(GameGenreData[index])
+                                ? 'bg-black text-white'
+                                : 'hover:bg-gray-300 hover:text-black'
                             }`}
-                            disabled={arr.length >= 4}>{music}</button>
+                            disabled={gameArr.length >= 4}>{game}</button>
                             
                         ))}
                         </div>
@@ -131,7 +122,7 @@ const GameGenre = (props) => {
                     <button
                         type="submit"
                         onClick={handleButtonClick}
-                        disabled={buttonClicked || arr.length < 2}
+                        disabled={buttonClicked || gameArr.length < 2}
                     className="rounded-lg text-white bg-black font-bold text-md px-3 py-2 self-end mx-3 md:px-8 md:py-2">Submit Genres</button>
                 </form>
             </div>   

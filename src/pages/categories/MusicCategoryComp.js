@@ -1,7 +1,9 @@
 import musicposter from './images/musicposter.jpg'
 import MusicGenre from './components/MusicGenre'
 import { useState } from 'react'
-// import React from 'react'
+// import { MusicGenreContext } from "../../../useContext/musicGenreContext.js"
+// import { songArr } from './components/MusicGenre'
+// import MusicGenre from './components/MusicGenre'
 
 const MusicCategoryComp = () => {
 
@@ -37,8 +39,9 @@ const MusicCategoryComp = () => {
               </div>
             </div>
             {isShown && (
-               
-               <MusicGenre onHandToggleModal = {handledToggleModal} />
+                
+                    <MusicGenre onHandToggleModal={handledToggleModal} />
+                
                )}
         </div>
 
