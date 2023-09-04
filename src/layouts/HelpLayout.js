@@ -8,13 +8,12 @@ const HelpLayout = () => {
             <div className="w-full space-y-6 md:w-1/2">
             <h2 className="font-bold text-4xl">Music Lists</h2>
             <p className="px-1 text-lg">
-                Sed ut perspiciatis unde omnis iste natus error sit
-                voluptatem accusantium doloremque laudantium, totam
-                rem aperiam, eaque ipsa quae ab illo inventore veritatis
-                et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-                sequi nesciunt. Neque porro quisquam est,
+                    Showing your genre lists is important to help others understand
+                    your preferences and interests in various forms of media,
+                    such as books, movies, music, or games. It enables better
+                    recommendations, fostering meaningful discussions, and connecting
+                    with like-minded individuals who share your tastes, ultimately
+                    enhancing your cultural experiences.
             </p>
            </div>
             

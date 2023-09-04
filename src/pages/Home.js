@@ -14,7 +14,7 @@ const Home = () => {
 
 
             <div className="w-full mt-36 space-y-12 p-3">
-                <h1 className="text-center text-3xl max-w-lg items-center mx-auto font-bold">Hello there, please select at least two genres from each category card</h1>
+                <h1 className="text-center text-3xl max-w-lg items-center mx-auto font-bold md:max-w-2xl">Hello there, please select at least two genres and at most three genres from each category card</h1>
                 <div className="w-full  flex flex-col justify-center items-center gap-6 md:flex-row">
                     
                     <MusicCategoryComp />
