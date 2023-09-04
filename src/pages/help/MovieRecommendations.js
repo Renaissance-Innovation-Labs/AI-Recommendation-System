@@ -16,7 +16,7 @@ const MovieRecommendations = () => {
 
   // Function to generate a prompt
   function generatePrompt(filmArr) {
-    return `Suggest ten movies with names, title an year they were released based on ${filmArr}`;
+    return `based on ${filmArr} Only suggest ten movies with names, title and year they were released`;
   }
 
   // Function to fetch song recommendations
@@ -58,7 +58,10 @@ const MovieRecommendations = () => {
       ) : (
         <div>
           {/* Render your content when not loading */}
-          <button className='bg-black text-white w-fit p-3 my-3' onClick={fetchSongRecommendations}>Fetch My Favorite Movies</button>
+            <button className='bg-black text-white w-fit p-3 my-3'
+              onClick={fetchSongRecommendations}
+              disabled={movieArr.length === 0}
+            >Fetch My Favorite Movies</button>
           <div>
               <ul>
 
