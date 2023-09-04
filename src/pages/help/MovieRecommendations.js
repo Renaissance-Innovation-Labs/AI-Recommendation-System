@@ -1,15 +1,17 @@
 // import React, { useEffect, useState } from 'react';
 import React, { useState } from 'react';
 import { openai } from '../../config/openaiConfig';
+import { useMovieGenre } from '../../useContext/movieGenreContext';
 
 const MovieRecommendations = () => {
   const [recommendations, setRecommendations] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const { movieArr } = useMovieGenre()
+
   // this is the syntax for sending the message as a string inside the prompt
 // const musicArr = songArr.join(', ')
-  
-  const movieArr = ["Action", "Romance", "Commedy"]
+  // const movieArr = ["Action", "Romance", "Commedy"]
   const filmArr = movieArr.join(', ')
 
   // Function to generate a prompt
@@ -21,7 +23,7 @@ const MovieRecommendations = () => {
   async function fetchSongRecommendations() {
     // Set loading state to true before making the request
     setIsLoading(true); 
-    console.log("elo")
+    console.log(movieArr)
 
     try {
       const response = await openai.completions.create({

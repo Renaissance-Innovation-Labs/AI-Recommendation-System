@@ -1,9 +1,10 @@
-import React from 'react';
+
 import {
   createBrowserRouter,
   Route,
   createRoutesFromElements,
   RouterProvider,
+
 } from 'react-router-dom';
 
 
@@ -19,6 +20,9 @@ import NotFound from './pages/NotFound';
 // Layouts
 import RootLayout from './layouts/RootLayout';
 import HelpLayout from './layouts/HelpLayout';
+
+import React, { useContext } from 'react';
+import { MovieGenreProvider } from './useContext/movieGenreContext';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,8 +44,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-     
+     <MovieGenreProvider>
         <RouterProvider router={router} />
+      </MovieGenreProvider>
     </>
   );
 }

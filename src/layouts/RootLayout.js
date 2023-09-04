@@ -18,7 +18,7 @@ const RootLayout = () => {
             
         
             
-            <main className='w-full py-6'>
+            <main className='w-full py-6 min-h-screen'>
             {/* <div className='w-full font-Roboto  mx-auto items-center text-center text-xl space-y-3 mt-12 max-w-sm md:max-w-4xl md:mt-36 md:text-4xl'>
                     <h1>
                     Welcome to a World of Tailored Suggestions

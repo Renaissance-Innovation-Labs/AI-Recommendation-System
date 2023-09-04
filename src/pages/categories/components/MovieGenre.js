@@ -1,6 +1,7 @@
 import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
+import { useMovieGenre } from "../../../useContext/movieGenreContext"
 
 const MovieGenre = (props) => {
 
@@ -15,6 +16,9 @@ const MovieGenre = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
+
+    const { setGenreList } = useMovieGenre()
+    
 
 
     const movieChangeHandler = (event) => {
@@ -45,6 +49,7 @@ const MovieGenre = (props) => {
                     // console.log(arr)
                     setClickedButtons([...clickedButtons, index]);
                     // setSelectionsMade(true);
+                   
                 }
             }
             }
@@ -63,7 +68,9 @@ const MovieGenre = (props) => {
             console.log(errorMessage)
         } else {
             console.log(movieArr);
+            setGenreList(movieArr)
             props.onHandToggleModal()
+            
         }
         if (errorMessage) {
             setErrorMessage('')
