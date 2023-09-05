@@ -12,7 +12,7 @@ const GameRecommendations = () => {
 
   // Function to generate a prompt
   function generatePrompt(gamesArr) {
-    return `Suggest ten games with the year they were released based on ${gamesArr}`;
+    return `based on ${gamesArr} Only suggest ten games with names, title and year they were released`;
   }
 
   // Function to fetch song recommendations

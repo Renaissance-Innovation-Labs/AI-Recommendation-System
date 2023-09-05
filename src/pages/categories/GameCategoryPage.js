@@ -15,7 +15,7 @@ import { Link } from "react-router-dom"
         return (
             <div className="p-3 space-y-6 w-full">
                 <div className="w-full space-y-6 md:w-1/2">
-                    <h2 className="font-bold text-4xl">Music Lists</h2>
+                    <h2 className="font-bold text-4xl">Game Lists</h2>
                     <p className="px-1 text-lg">
                         Welcome back to Recom-Zen-Guide! You've already
                         chosen your favorite genres on the home page,

@@ -16,7 +16,7 @@ const SongRecommendations = () => {
   
 
   function generatePrompt(musicArr) {
-    return `Suggest ten songs based on ${musicArr}`;
+    return `based on ${musicArr} Only suggest ten songs with names, title and year they were released`;
   }
 
   // Function to fetch song recommendations
@@ -29,7 +29,7 @@ const SongRecommendations = () => {
       const response = await openai.completions.create({
         model: 'text-davinci-003',
         prompt: generatePrompt(musicArr),
-        max_tokens: 150,
+        max_tokens: 200,
         temperature: 0.6,
       });
 

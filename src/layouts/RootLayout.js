@@ -1,8 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import worldlogo from '../pages/categories/images/worldlogo.png'
+import recomzenguidelogo from '../pages/categories/images/recom-zens-guides.png'
 import googleicons from '../pages/categories/images/googleicons.svg'
 import Facebookicon from '../pages/categories/images/Facebookicon.svg'
 import instagramicon from '../pages/categories/images/instagramicon.js.svg'
+import homeicon from '../pages/categories/images/icons8-home.svg'
+import Aboutus from '../pages/categories/images/about-us-svgrepo-com (1).svg'
 
 
 const RootLayout = () => {
@@ -11,11 +14,17 @@ const RootLayout = () => {
         <div className='font-Roboto'>
             <header>
             <nav className='w-full bg-gray-700  text-white flex flex-row justify-end gap-x-12 h-fit  pr-6'>
-            <div className='flex-1 w-12 h-12 px-2 pt-3'>
-                <img src={worldlogo} alt='world logo' className='w-12 h-12 rounded-full' />
+            <div className='flex-1 w-fit h-fit mt-3 sm:px-2 sm:mt-0 md:mt-1 pt-3'>
+                <img src={recomzenguidelogo} alt='world logo' className=' sm:h-12' />
            </div>
-            <NavLink className={'text-2xl focus:bg-gray-700 py-6 px-3'} to="Home">Home</NavLink>
-            <NavLink className={'text-2xl focus:bg-gray-700 py-6'} to="About">About</NavLink>
+                    <NavLink className={'text-2xl focus:bg-gray-700 py-6'} to="Home">
+                       <h1 className='hidden md:block'>Home</h1>
+                        <img src={homeicon} alt='home icon' className='w-8 h-8  md:hidden' />
+                    </NavLink>
+                    <NavLink className={'text-2xl focus:bg-gray-700 py-6'} to="About">
+                    <h1 className='hidden md:block'>About</h1>
+                    <img src={Aboutus} alt='home icon' className='w-8 h-8  md:hidden' />
+                    </NavLink>
             </nav>
             </header>
             
