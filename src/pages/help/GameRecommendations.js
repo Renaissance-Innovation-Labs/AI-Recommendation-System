@@ -54,7 +54,7 @@ const GameRecommendations = () => {
       ) : (
         <div>
           {/* Render your content when not loading */}
-            <button className='bg-black text-white w-fit p-3 my-3'
+            <button className='bg-slate-600 text-white w-fit p-3 my-3'
               onClick={fetchSongRecommendations}
               disabled={gamesArr.length === 0}
             >Fetch My Favorite Games</button>
