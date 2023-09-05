@@ -106,7 +106,7 @@ const MovieGenre = (props) => {
                     
                     
                     {/* Display arr */}
-                    <h1 className="text-md font-bold max-w-xs px-2 text-center md:text-xl md:p-3">Pick your top movie genre for a great night of entertainment</h1>
+                    <h1 className="text-md font-bold max-w-xx px-2 text-center md:text-xl md:p-3 md:max-w-xl">Select your preferred movie genre and let the cinematic journey begin</h1>
                     <div className="px-6 flex flex-col">
                        
                       {/* Always render an empty placeholder */}

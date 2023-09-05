@@ -17,13 +17,9 @@ import { Link } from "react-router-dom"
                 <div className="w-full space-y-6 md:w-1/2">
                     <h2 className="font-bold text-4xl">Game Lists</h2>
                     <p className="px-1 text-lg">
-                        Welcome back to Recom-Zen-Guide! You've already
-                        chosen your favorite genres on the home page,
-                        and now it's our turn to dial up the groove.
-                        Get ready to immerse yourself in a handpicked
-                        playlist tailored just for you. It's time to kick
-                        back, feel the rhythm, and let the music take you
-                        on a one-of-a-kind journey.
+                        Welcome back to your Game Category Page!
+                        We've got a handpicked Gamelists tailored just for you
+                        Your chosen game genres below define your unique gaming adventure.
                     </p>
                 </div>
 
