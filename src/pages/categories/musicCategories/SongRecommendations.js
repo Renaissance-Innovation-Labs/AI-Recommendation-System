@@ -51,8 +51,8 @@ const SongRecommendations = () => {
 
   return (
     <div>
-      <h1>My Music Recommended List</h1>
-      {/* <button className='bg-gray-700 text-white p-2' onClick={()=>(console.log([musicArr]))}>show music Array</button> */}
+      <h1>My Music Playlist</h1>
+      <button className='bg-gray-700 text-white p-2' onClick={()=>(console.log([musicArr]))}>show music Array</button>
 
       {/* Conditionally render a loading indicator */}
       {isLoading ? (

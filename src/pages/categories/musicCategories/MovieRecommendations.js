@@ -1,40 +1,34 @@
+// import React, { useEffect, useState } from 'react';
 import React, { useState } from 'react';
 import { openai } from '../../config/openaiConfig';
-import { useMusicGenre } from '../../useContext/musicGenreContext';
+import { useMovieGenre } from '../../useContext/movieGenreContext';
 
-const SongRecommendations = () => {
+const MovieRecommendations = () => {
   const [recommendations, setRecommendations] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { movieArr } = useMovieGenre()
+  const filmArr = movieArr.join(', ')
 
-  // this is the syntax for sending the message as a string inside the prompt
-// const musicArr = songArr.join(', ')
-// const { songArr } = useContext(MusicGenreContext);
-  
-  const { songArr } = useMusicGenre()        
-  // const songArr = ["blues", "jazz", "hiphop"]
-  const musicArr = songArr.join(', ')
-  
-
-  function generatePrompt(musicArr) {
-    return `Suggest ten songs based on ${musicArr}`;
+  // Function to generate a prompt
+  function generatePrompt(filmArr) {
+    return `based on ${filmArr} Only suggest ten movies with names, title and year they were released`;
   }
 
   // Function to fetch song recommendations
   async function fetchSongRecommendations() {
     // Set loading state to true before making the request
     setIsLoading(true); 
-    console.log([musicArr])
+    console.log(movieArr)
 
     try {
       const response = await openai.completions.create({
         model: 'text-davinci-003',
-        prompt: generatePrompt(musicArr),
+        prompt: generatePrompt(filmArr),
         max_tokens: 150,
         temperature: 0.6,
       });
 
-      // console.log(response)
-      console.log(musicArr)
+      console.log(response)
       console.log(response.choices[0].text);
      
       // when recommendations are separated by line breaks
@@ -51,8 +45,7 @@ const SongRecommendations = () => {
 
   return (
     <div>
-      <h1>My Music Recommended List</h1>
-      {/* <button className='bg-gray-700 text-white p-2' onClick={()=>(console.log([musicArr]))}>show music Array</button> */}
+      <h1>My Movie Playlist</h1>
 
       {/* Conditionally render a loading indicator */}
       {isLoading ? (
@@ -60,10 +53,10 @@ const SongRecommendations = () => {
       ) : (
         <div>
           {/* Render your content when not loading */}
-            <button className='bg-gray-700 text-white w-fit p-3 my-3'
+            <button className='bg-black text-white w-fit p-3 my-3'
               onClick={fetchSongRecommendations}
-              disabled={musicArr.length === 0}
-            >Fetch My Music Lists</button>
+              disabled={movieArr.length === 0}
+            >Fetch My Favorite Movies</button>
           <div>
               <ul>
 
@@ -76,7 +69,7 @@ const SongRecommendations = () => {
                     <li className='border-b-2 border-b-solid py-1 text-gray-700' key={index}>{recommendation}</li>
                   ))
               ) : (
-                <li>No Music Lists available For Now, Wanna See Playlist? Click Button Above</li>
+                <li>No Game Data available For Now, Wanna See Playlist? Click Button Above</li>
               )}
                 
               </ul>
@@ -94,4 +87,4 @@ const SongRecommendations = () => {
 //   useEffect(() => {
 // }
 
-export default SongRecommendations;
+export default MovieRecommendations;

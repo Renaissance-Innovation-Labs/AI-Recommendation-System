@@ -53,7 +53,7 @@ const MovieRecommendations = () => {
       ) : (
         <div>
           {/* Render your content when not loading */}
-            <button className='bg-black text-white w-fit p-3 my-3'
+          <button className='bg-gray-700 text-white w-fit p-3 my-3'
               onClick={fetchSongRecommendations}
               disabled={movieArr.length === 0}
             >Fetch My Favorite Movies</button>

@@ -1,12 +1,16 @@
 import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
+import { Link } from "react-router-dom"
 import { useMusicGenre } from "../../../useContext/musicGenreContext"
+import { useNavigate } from "react-router-dom"
 
 const MusicGenre = (props) => {
     const musicGenreData =[
         'jazz', 'classical', 'hiphop', 'rythm&blues', 'pop', 'afrobeat', 'Reggae', 'gospel', 'metal', 'rock'
     ]
+
+    const navigate = useNavigate()
 
     const [songArr, setSongArr] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
@@ -61,6 +65,9 @@ const MusicGenre = (props) => {
             console.log(songArr);
             setGenreList(songArr)
             props.onHandToggleModal()
+            //   navigate('/musicCategories')
+              navigate('/MusicCategoryPage')
+
         }
         if (errorMessage) {
             setErrorMessage('')
@@ -71,6 +78,18 @@ const MusicGenre = (props) => {
 
 
 
+
+    const handleSwitchPage = (event) => {
+        event.preventDefault()
+    // navigate('/home')
+        console.log("hi")
+    }
+
+
+    // runMultipleFunctions() {
+    //     this.handleSwitchPage();
+    //     this.handleButtonClick();
+    //   }
     
   
 
@@ -90,7 +109,7 @@ const MusicGenre = (props) => {
                     
                     
                     {/* Display arr */}
-                    <h1 className="text-md font-bold max-w-xs px-2 text-center md:text-xl md:p-3">Pick Your Favorite Genres: What Tunes Ignite Your Soul?</h1>
+                    <h1 className="text-md font-bold px-2 text-center md:text-xl md:p-3">What Music Ignites Your Soul? Select your favorite genre, and we'll create a tailored muisc list that matches your musical preferences.</h1>
                     <div className="px-6 flex flex-col">
                        
                       {/* Always render an empty placeholder */}
@@ -118,11 +137,20 @@ const MusicGenre = (props) => {
                         </div>
                     </div>
 
+                    {/* <Link to="/help"> */}
                     <button
                         type="submit"
                         onClick={handleButtonClick}
+                        // onClick={() => {
+                        //     handleButtonClick()
+                        //     handleSwitchPage()
+                        // }}
                         disabled={buttonClicked || songArr.length < 2}
-                    className="rounded-lg text-white bg-black font-bold text-md px-3 py-2 self-end mx-3 md:px-8 md:py-2">Submit Genres</button>
+                        className="rounded-lg text-white bg-black font-bold text-md px-3
+                         py-2 self-end mx-3 md:px-8 md:py-2">
+                        Submit Genres
+                        </button>
+                    {/* </Link> */}
                 </form>
             </div>   
 

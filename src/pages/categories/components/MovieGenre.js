@@ -2,8 +2,11 @@ import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
 import { useMovieGenre } from "../../../useContext/movieGenreContext"
+import { useNavigate } from "react-router-dom"
 
 const MovieGenre = (props) => {
+
+    
 
     // const [musicGenreData, setMusicGenreData] = useState([
     //     'jazz', 'jazez', 'hiphop', 'rythm', 'blues', 'afrobeat', 'soulmusic', 'gospel', 'metal', 'rock'
@@ -16,6 +19,8 @@ const MovieGenre = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
+
+    const navigate = useNavigate()
 
     const { setGenreList } = useMovieGenre()
     
@@ -69,6 +74,7 @@ const MovieGenre = (props) => {
         } else {
             console.log(movieArr);
             setGenreList(movieArr)
+            navigate('/MovieCategoryPage')
             props.onHandToggleModal()
             
         }

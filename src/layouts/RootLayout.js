@@ -1,5 +1,8 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import worldlogo from '../pages/categories/images/worldlogo.png'
+import googleicons from '../pages/categories/images/googleicons.svg'
+import Facebookicon from '../pages/categories/images/Facebookicon.svg'
+import instagramicon from '../pages/categories/images/instagramicon.js.svg'
 
 
 const RootLayout = () => {
@@ -19,12 +22,6 @@ const RootLayout = () => {
         
             
             <main className='w-full py-6 min-h-screen'>
-            {/* <div className='w-full font-Roboto  mx-auto items-center text-center text-xl space-y-3 mt-12 max-w-sm md:max-w-4xl md:mt-36 md:text-4xl'>
-                    <h1>
-                    Welcome to a World of Tailored Suggestions
-                    Revolutionize Your Choices with Recom-Zen-Guide
-                    The Ultimate Recommendation Tool</h1>
-                </div> */}
                 <Outlet />
             </main>
             
@@ -41,10 +38,22 @@ const RootLayout = () => {
                             </div>
                            <h2>One of the very best out there</h2>
                         </div>
-                        <div className='flex flex-row gap-2'>
+                        <div className='hidden md:flex md:flex-row md:gap-2'>
                         <a className='border-b-2 border-b-slate-500' href='https://www.google.com'>google</a>.
                         <a className='border-b-2 border-b-slate-500' href='https://www.facebook.com'>Facebook</a>.
                         <a className='border-b-2 border-b-slate-500' href='https://www.instagram.com'>Instagram</a>
+                        </div>
+                        <div className='flex flex-row gap-2 md:hidden'>
+                            <a href='https://www.google.com'>
+                            <img src={googleicons} alt='world logo' className='w-6 h-6 text-white' />
+                            </a>
+                            <a href='https://www.facebook.com'>
+                            <img src={Facebookicon} alt='world logo' className='h-6 w-6' />
+                            </a>
+
+                            <a href='https://www.facebook.com'>
+                            <img src={instagramicon} alt='world logo' className='h-6 w-6' />
+                            </a>
                         </div>
                     </div>
             </div>

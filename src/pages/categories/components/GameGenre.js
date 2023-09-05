@@ -2,6 +2,7 @@ import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
 import { useGameGenre } from "../../../useContext/gameGenreContext"
+import { useNavigate } from "react-router-dom"
 
 const GameGenre = (props) => {
 
@@ -16,6 +17,8 @@ const GameGenre = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
+
+    const navigate = useNavigate()
 
     const { setGenreList } = useGameGenre()
 
@@ -68,6 +71,7 @@ const GameGenre = (props) => {
         else {
             console.log(gameArr);
             setGenreList(gameArr)
+            navigate('/GameCategoryPage')
             props.onHandToggleGameModal()
         }
        

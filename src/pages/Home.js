@@ -14,7 +14,10 @@ const Home = () => {
 
 
             <div className="w-full mt-36 space-y-12 p-3">
-                <h1 className="text-center text-3xl max-w-lg items-center mx-auto font-bold md:max-w-2xl">Hello there, please select at least two genres and at most three genres from each category card</h1>
+                <h1 className="text-center text-2xl max-w-fit items-center mx-auto font-medium md:max-w-5xl font-roboto">
+                    Welcome to <span>Recom-Zen-Guide</span>, your ultimate destination for discovering new hobbies based on your
+                    favorite genres. Simply select a music genre below, and we'll curate a personalized playlist just for you.
+                </h1>
                 <div className="w-full  flex flex-col justify-center items-center gap-6 md:flex-row">
                     
                     <MusicCategoryComp />
