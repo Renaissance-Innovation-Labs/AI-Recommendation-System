@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import worldlogo from '../pages/categories/images/worldlogo.png'
-import recomzenguidelogo from '../pages/categories/images/recom-zens-guides.png'
+import recomzenguidelogo from '../pages/categories/images/recom-zen-guidelogo2 (1).svg'
 import googleicons from '../pages/categories/images/googleicons.svg'
 import Facebookicon from '../pages/categories/images/Facebookicon.svg'
 import instagramicon from '../pages/categories/images/instagramicon.js.svg'
@@ -15,7 +15,7 @@ const RootLayout = () => {
             <header>
             <nav className='w-full bg-gray-700  text-white flex flex-row justify-end gap-x-12 h-fit  pr-6'>
             <div className='flex-1 px-2 pt-3 w-12 h-12'>
-                <img src={worldlogo} alt='world logo' className='w-12 h-12 rounded-full' />
+                <img src={recomzenguidelogo} alt='world logo' className='w-12 h-12 rounded-full' />
            </div>
             {/* <div className='flex-1 px-2 pt-3 w-fit h-fit'>
                 <img src={recomzenguidelogo} alt='world logo' className='w-44 h-12 rounded-full' />
