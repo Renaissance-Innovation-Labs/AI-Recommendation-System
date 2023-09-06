@@ -55,7 +55,7 @@ const { songArr } = useMusicGenre()
             <div className="flex flex-col gap-3 md:flex-row">
             <h1 className="pt-2">Want more recommendations? Try another genre!</h1>
             <Link to= '/home'>
-            <button className="bg-slate-600 text-white p-2 rounded-md md:text-md">Return to HomePage</button>
+            <button className="bg-slate-700 text-white p-2 rounded-md md:text-md">Return to HomePage</button>
             </Link>
            </div>
         </div>
