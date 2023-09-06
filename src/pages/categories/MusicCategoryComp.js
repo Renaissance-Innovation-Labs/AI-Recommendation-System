@@ -25,9 +25,13 @@ const MusicCategoryComp = () => {
             </div>
 
 
-            <div className="hidden group-hover:flex font-bold  w-full h-full absolute top-0 right-0 bottom-0 left-0 cursor-pointer bg-black/30 text-white
+            {/* <div className="hidden group-hover:flex font-bold  w-full h-full absolute top-0 right-0 bottom-0 left-0 cursor-pointer bg-black/30 text-white
              flex-col justify-center items-center gap-6 mx-auto opacity-0 transition duration-300 ease-in-out hover:opacity-100
-             rounded-xl overflow-hidden">
+             rounded-xl overflow-hidden"> */}
+            
+            <div className="flex font-bold  w-full h-full absolute top-0 right-0 bottom-0 left-0 cursor-pointer bg-black/30 text-white
+             flex-col justify-center items-center gap-6 mx-auto opacity-100 transition duration-300 ease-in-out
+             rounded-xl overflow-hidden md:hidden md:group-hover:flex md:opacity-0  md:hover:opacity-100">
 
                
                 <div className=' flex flex-col justify-center items-center gap-6'>

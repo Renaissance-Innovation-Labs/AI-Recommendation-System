@@ -141,11 +141,8 @@ const MusicGenre = (props) => {
                     <button
                         type="submit"
                         onClick={handleButtonClick}
-                        // onClick={() => {
-                        //     handleButtonClick()
-                        //     handleSwitchPage()
-                        // }}
-                        disabled={buttonClicked || songArr.length < 2}
+                        // disabled={buttonClicked || songArr.length < 2}
+                        disabled={songArr.length < 0}
                         className="rounded-lg text-white bg-black font-bold text-md px-3
                          py-2 self-end mx-3 md:px-8 md:py-2">
                         Submit Genres
