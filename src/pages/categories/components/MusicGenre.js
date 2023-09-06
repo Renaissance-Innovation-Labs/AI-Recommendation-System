@@ -29,6 +29,10 @@ const MusicGenre = (props) => {
         if (selectedIndex !== undefined) {
             const index = parseInt(selectedIndex, 10);
             if (!isNaN(index) && index >= 0 && index < musicGenreData.length) {
+
+                if (errorMessage) {
+                    setErrorMessage('')
+                }
                 if (songArr.includes(musicGenreData[index])) {
                    
                 const updatedArr = songArr.filter((genre) => genre !== musicGenreData[index]);
@@ -57,11 +61,16 @@ const MusicGenre = (props) => {
         event.preventDefault()
       
         setButtonClicked(true);
+        if (songArr.length < 1) {
+            setErrorMessage('please select at least 2 genres you like, you are allowed to select up to 3');
+        }
+        if (errorMessage) {
+            setErrorMessage('')
+        }
         if (songArr.length < 2) {
-            setErrorMessage('please select the genres you like');
-           
-            console.log(errorMessage)
-        } else {
+            setErrorMessage('please select at least 2 genres you like, you are allowed to select up to 3');
+        } 
+        else {
             console.log(songArr);
             setGenreList(songArr)
             props.onHandToggleModal()
@@ -69,27 +78,11 @@ const MusicGenre = (props) => {
               navigate('/MusicCategoryPage')
 
         }
-        if (errorMessage) {
-            setErrorMessage('')
-        }
+       
 
         // setModalOpen(false);
     }
 
-
-
-
-    const handleSwitchPage = (event) => {
-        event.preventDefault()
-    // navigate('/home')
-        console.log("hi")
-    }
-
-
-    // runMultipleFunctions() {
-    //     this.handleSwitchPage();
-    //     this.handleButtonClick();
-    //   }
     
   
 
@@ -114,7 +107,7 @@ const MusicGenre = (props) => {
                        
                       {/* Always render an empty placeholder */}
                         <div>
-                        <p className={`text-red-500 text-sm h-8 ${errorMessage ? 'visible' : 'invisible'}`}>
+                        <p className={`text-red-500 text-sm mb-6 h-8 md:mb-1 ${errorMessage ? 'visible' : 'invisible'}`}>
                         {errorMessage}
                         </p>
                         </div>
@@ -141,7 +134,6 @@ const MusicGenre = (props) => {
                     <button
                         type="submit"
                         onClick={handleButtonClick}
-                        // disabled={buttonClicked || songArr.length < 2}
                         disabled={songArr.length < 0}
                         className="rounded-lg text-white bg-black font-bold text-md px-3
                          py-2 self-end mx-3 md:px-8 md:py-2">

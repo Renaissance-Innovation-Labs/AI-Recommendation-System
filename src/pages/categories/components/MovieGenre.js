@@ -34,13 +34,16 @@ const MovieGenre = (props) => {
         if (selectedIndex !== undefined) {
             const index = parseInt(selectedIndex, 10);
             if (!isNaN(index) && index >= 0 && index < movieGenreData.length) {
+                if (errorMessage) {
+                    setErrorMessage('')
+                }
+
                 if (movieArr.includes(movieGenreData[index])) {
                    
                 const updatedArr = movieArr.filter((genre) => genre !== movieGenreData[index]);
                     setMovieArr(updatedArr);
                     console.log(updatedArr)
                 setErrorMessage('');
-                // setErrorMessage('Genre already selected.'); // Display a message if already selected.
             }
             else {
                 // If it's not in arr and the limit is not reached, add it
@@ -67,20 +70,27 @@ const MovieGenre = (props) => {
         event.preventDefault()
       
         setButtonClicked(true);
+        if (movieArr.length < 1) {
+            setErrorMessage('please select at least 2 genres you like, you are allowed to select up to 3');
+        }
+        if (errorMessage) {
+            setErrorMessage('')
+        }
         if (movieArr.length < 2) {
-            setErrorMessage('please select the genres you like');
-           
-            console.log(errorMessage)
-        } else {
+            setErrorMessage('please select at least 2 genres you like, you are allowed to select up to 3');
+        } 
+        else {
             console.log(movieArr);
             setGenreList(movieArr)
             navigate('/MovieCategoryPage')
             props.onHandToggleModal()
             
         }
+
         if (errorMessage) {
             setErrorMessage('')
         }
+       
 
         // setModalOpen(false);
     }
@@ -111,7 +121,7 @@ const MovieGenre = (props) => {
                        
                       {/* Always render an empty placeholder */}
                         <div>
-                        <p className={`text-red-500 text-sm h-8 ${errorMessage ? 'visible' : 'invisible'}`}>
+                        <p className={`text-red-500 text-sm mb-6 h-8 md:mb-1 ${errorMessage ? 'visible' : 'invisible'}`}>
                         {errorMessage}
                         </p>
                         </div>
@@ -137,8 +147,9 @@ const MovieGenre = (props) => {
                     <button
                         type="submit"
                         onClick={handleButtonClick}
-                        disabled={buttonClicked || movieArr.length < 2}
-                    className="rounded-lg text-white bg-black font-bold text-md px-3 py-2 self-end mx-3 md:px-8 md:py-2">Submit Genres</button>
+                        // disabled={movieArr.length < 0}
+                        className="rounded-lg text-white bg-black font-bold text-md px-3 py-2 self-end mx-3 md:px-8 md:py-2">Submit Genres
+                    </button>
                 </form>
             </div>   
             
