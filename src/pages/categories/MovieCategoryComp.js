@@ -22,7 +22,7 @@ const MovieCategoryComp = () => {
     
         return (
             
-            <div className=" group w-full relative h-fit rounded-xl md:w-96">
+            <div className=" group w-full relative h-fit rounded-xl sm:w-72 md:w-96">
                 <div>
                     <img src={movieposter} alt='music poster' className='w-full h-fit rounded-xl'/>   
                 </div>

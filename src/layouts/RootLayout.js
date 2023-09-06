@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import worldlogo from '../pages/categories/images/worldlogo.png'
+// import worldlogo from '../pages/categories/images/worldlogo.png'
 import recomzenguidelogo from '../pages/categories/images/recom-zen-guidelogo2 (1).svg'
 import googleicons from '../pages/categories/images/googleicons.svg'
 import Facebookicon from '../pages/categories/images/Facebookicon.svg'

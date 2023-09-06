@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { openai } from '../../config/openaiConfig';
 import { useMusicGenre } from '../../useContext/musicGenreContext';
+import musicplayers from '../categories/images/icons8-music.svg'
 
 const SongRecommendations = () => {
   const [recommendations, setRecommendations] = useState('');
@@ -72,8 +73,8 @@ const SongRecommendations = () => {
                     .map(recommendation => recommendation.trim()) 
                     // Remove completely empty lines
                   .filter(recommendation => recommendation !== '') 
-                  .map((recommendation, index) => (
-                    <li className='border-b-2 border-b-solid py-1 text-gray-700' key={index}>{recommendation}</li>
+                    .map((recommendation, index) => (
+                      <li className='border-b-2 border-b-solid py-1 text-gray-700'  key={index}>{recommendation}</li>
                   ))
               ) : (
                 <li>No Music Lists available For Now, Wanna See Playlist? Click Button Above</li>

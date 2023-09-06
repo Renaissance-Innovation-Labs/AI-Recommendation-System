@@ -1,6 +1,7 @@
 import { useGameGenre } from "../../useContext/gameGenreContext"
 import GameRecommendations from '../help/GameRecommendations'
 import { Link } from "react-router-dom"
+import gameicon from './images/game-icon.jpg'
 
 
 
@@ -14,6 +15,7 @@ import { Link } from "react-router-dom"
 
         return (
             <div className="p-3 space-y-6 w-full">
+                <div>
                 <div className="w-full space-y-6 md:w-1/2">
                     <h2 className="font-bold text-4xl">Game Lists</h2>
                     <p className="px-1 text-lg">
@@ -21,12 +23,16 @@ import { Link } from "react-router-dom"
                         We've got a handpicked Gamelists tailored just for you
                         Your chosen game genres below define your unique gaming adventure.
                     </p>
+                    </div>
+                    <img src={gameicon} alt="game icon"  />
                 </div>
 
 
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-row gap-3">
+                    <img src={gameicon} alt="game icon" className="w-6 h-6" />
                     <h1 className="font-bold text-slate-600">Your Selected Genres</h1>
+                    </div>
                     <div className="flex flex-row gap-3">
                         {gameArr.map((games, index) => (
                             <button
@@ -36,7 +42,7 @@ import { Link } from "react-router-dom"
                                 disabled>{games}</button>
                         ))}
                     </div>
-                </div>
+              
 
 
              <GameRecommendations />

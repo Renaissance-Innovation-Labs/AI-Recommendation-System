@@ -17,7 +17,7 @@ const Home = () => {
                 <h1 className="text-center text-2xl max-w-fit items-center mx-auto font-bold md:max-w-5xl font-roboto md:text-4xl">
                     Hi there, discover new hobbies matching your favorite genre with <span>Recom-Zen-Guide</span>'s recommender tool.
                 </h1>
-                <div className="w-full  flex flex-col justify-center items-center gap-6 md:flex-row">
+                <div className="w-full flex flex-col justify-center items-center gap-6 sm:flex-row">
                     
                     <MusicCategoryComp />
                     
