@@ -13,8 +13,8 @@ const Home = () => {
             {/* <h2>HomePage</h2> */}
 
 
-            <div className="w-full mt-36 space-y-12 p-3">
-                <h1 className="text-center text-4xl max-w-fit items-center mx-auto font-bold md:max-w-5xl font-roboto">
+            <div className="w-full space-y-12 p-3 md:mt-36">
+                <h1 className="text-center text-2xl max-w-fit items-center mx-auto font-bold md:max-w-5xl font-roboto md:text-4xl">
                     Hi there, discover new hobbies matching your favorite genre with <span>Recom-Zen-Guide</span>'s recommender tool.
                 </h1>
                 <div className="w-full  flex flex-col justify-center items-center gap-6 md:flex-row">

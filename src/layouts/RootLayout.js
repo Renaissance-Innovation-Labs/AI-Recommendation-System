@@ -14,7 +14,7 @@ const RootLayout = () => {
         <div className='font-Roboto'>
             <header>
             <nav className='w-full bg-gray-700  text-white flex flex-row justify-end gap-x-12 h-fit  pr-6'>
-            <div className='flex-1 px-2 pt-3 w-12 h-12'>
+            <div className='flex-1 mt-4 mx-2 w-12 h-12'>
                 <img src={recomzenguidelogo} alt='world logo' className='w-12 h-12 rounded-full' />
            </div>
             {/* <div className='flex-1 px-2 pt-3 w-fit h-fit'>
