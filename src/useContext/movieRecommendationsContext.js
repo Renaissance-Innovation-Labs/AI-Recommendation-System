@@ -19,7 +19,7 @@ export function MovieRecommendationProvider({ children }) {
     const filmArr = movieArr
 
     function generatePrompt(filmArr) {
-        return `based on ${filmArr} Only suggest ten songs with names, title and year they were released`;
+        return `based on ${filmArr} Only suggest ten movies with names, title and year they were released`;
       }
       async function fetchMovieRecommendations() {
         // Set loading state to true before making the request
