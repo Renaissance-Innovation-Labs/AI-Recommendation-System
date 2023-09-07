@@ -1,62 +1,19 @@
 // import React, { useEffect, useState } from 'react';
-import React, { useState } from 'react';
-import { openai } from '../../config/openaiConfig';
-import { useMovieGenre } from '../../useContext/movieGenreContext';
+// import { useMovieGenre } from '../../useContext/movieGenreContext';
+import { useMovieRecommendation } from "../../useContext/movieRecommendationsContext";
 
 const MovieRecommendations = () => {
-  const [recommendations, setRecommendations] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { movieArr } = useMovieGenre()
-  const filmArr = movieArr.join(', ')
 
-  // Function to generate a prompt
-  function generatePrompt(filmArr) {
-    return `based on ${filmArr} Only suggest ten movies with names, title and year they were released`;
-  }
+  const { blockbusterRecommendations } = useMovieRecommendation()
 
-  // Function to fetch song recommendations
-  async function fetchSongRecommendations() {
-    // Set loading state to true before making the request
-    setIsLoading(true); 
-    console.log(movieArr)
+  const recommendations = blockbusterRecommendations
 
-    try {
-      const response = await openai.completions.create({
-        model: 'text-davinci-003',
-        prompt: generatePrompt(filmArr),
-        max_tokens: 150,
-        temperature: 0.6,
-      });
-
-      console.log(response)
-      console.log(response.choices[0].text);
-     
-      // when recommendations are separated by line breaks
-      setRecommendations(response.choices[0].text.split('\n')); 
-      
-    } catch (error) {
-      // Handle errors here
-      console.error(error);
-    } finally {
-      // Set loading state to false when the request is complete (success or error)
-      setIsLoading(false);
-    }
-  }
 
   return (
     <div>
       <h1>My Movie Playlist</h1>
-
-      {/* Conditionally render a loading indicator */}
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
         <div>
-          {/* Render your content when not loading */}
-          <button className='bg-gray-700 text-white w-fit p-3 my-3'
-              onClick={fetchSongRecommendations}
-              disabled={movieArr.length === 0}
-            >Fetch My Favorite Movies</button>
+
           <div>
               <ul>
 
@@ -76,7 +33,6 @@ const MovieRecommendations = () => {
 
           </div>
         </div>
-      )}
     </div>
   );
 }

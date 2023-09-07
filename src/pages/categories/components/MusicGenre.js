@@ -1,9 +1,13 @@
 import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
-import { Link } from "react-router-dom"
 import { useMusicGenre } from "../../../useContext/musicGenreContext"
 import { useNavigate } from "react-router-dom"
+import { openai } from '../../../config/openaiConfig';
+// import SongRecommendations from "../../help/SongRecommendations"
+// import MusicCategoriesPage from "../MusicCategoryPage"
+import { useSongRecommendation } from '../../../useContext/songRecommendationsContext';
+
 
 const MusicGenre = (props) => {
     const musicGenreData =[
@@ -16,8 +20,8 @@ const MusicGenre = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
-
     const { setGenreList } = useMusicGenre()
+    const { isLoading, fetchSongRecommendations } = useSongRecommendation()
 
 
 
@@ -52,13 +56,14 @@ const MusicGenre = (props) => {
                 }
             }
             }
-            // console.log(updatedArr)
         }
     }
 
 
+
     const handleButtonClick = (event) => {
         event.preventDefault()
+    // const handleButtonClick = () => {
       
         setButtonClicked(true);
         if (songArr.length < 1) {
@@ -71,25 +76,19 @@ const MusicGenre = (props) => {
             setErrorMessage('please select at least 2 genres you like, you are allowed to select up to 3');
         } 
         else {
+            songArr.join(', ')
             console.log(songArr);
             setGenreList(songArr)
-            props.onHandToggleModal()
-            //   navigate('/musicCategories')
-              navigate('/MusicCategoryPage')
+            // props.onHandToggleModal()
+            fetchSongRecommendations()
+            navigate('/MusicCategoryPage')
 
         }
-       
-
-        // setModalOpen(false);
     }
-
-    
-  
 
     return (
 
         <>
-        {/* <MusicGenreContext.provider value = {songArr}> */}
             <div className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-70 z-[1000] pointer-events-none overflow-hidden"> 
                 
             </div>
@@ -130,17 +129,24 @@ const MusicGenre = (props) => {
                         </div>
                     </div>
 
-                    {/* <Link to="/help"> */}
-                    <button
-                        type="submit"
-                        onClick={handleButtonClick}
-                        disabled={songArr.length < 0}
-                        className="rounded-lg text-white bg-black font-bold text-md px-3
+                    {isLoading ? (
+                        <div>Loading...</div>
+                    ) : (
+                  
+                        <button
+                            type="submit"
+                            onClick={handleButtonClick}
+                            disabled={songArr.length < 0}
+                            className="rounded-lg text-white bg-black font-bold text-md px-3
                          py-2 self-end mx-3 md:px-8 md:py-2">
-                        Submit Genres
+                            Submit Genres
                         </button>
-                    {/* </Link> */}
+                            
+                    )}
+                    
                 </form>
+
+                {/* <SongRecommendations recommendations={recommendations} /> */}
             </div>   
 
     </>

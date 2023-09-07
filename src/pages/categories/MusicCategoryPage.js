@@ -4,6 +4,8 @@ import SongRecommendations from "../help/SongRecommendations"
 import { Link } from "react-router-dom"
 import musicImage from './images/music genre popss.svg'
 import musicicon from './images/icons8-smart-playlist-24.png'
+import { useSongRecommendation } from "../../useContext/songRecommendationsContext"
+import loadingicon from '../categories/images/loading icon.gif'
 
 
 
@@ -15,9 +17,15 @@ const { songArr } = useMusicGenre()
         console.log(songArr)
  }
 
+    const { isLoading } = useSongRecommendation()
+    
     return (
         <div className="p-3 space-y-6 w-full">
-        {/* <div className="p-3 space-y-6 w-full flex flex-col items-center justify-center text-center"> */}
+            {
+                isLoading ? (<div className="w-full items-center flex justify-center"><img className="mx-auto text-center w-44 h-44 " src={loadingicon} alt="loading icon" /> </div>)
+                    :
+                    (
+            <div>
             <div className="flex flex-coljustify-start gap-6">
               
             <div className="w-full space-y-6 md:w-1/2">
@@ -38,7 +46,7 @@ const { songArr } = useMusicGenre()
                 <img src={musicicon} alt="playlist icon" className="w-6 h-6" />
             <h1 className="font-bold text-slate-600">Your Selected Genres</h1>
             </div>
-            <div className="flex flex-row gap-3">
+            <div className="flex flex-row gap-3 py-6">
             {songArr.map((song, index) => (
                 <button
                 data-index={index}
@@ -57,7 +65,9 @@ const { songArr } = useMusicGenre()
             <Link to= '/home'>
             <button className="bg-slate-700 text-white p-2 rounded-md md:text-md">Return to HomePage</button>
             </Link>
-           </div>
+            </div>
+        </div>            
+        )}
         </div>
     )
 }

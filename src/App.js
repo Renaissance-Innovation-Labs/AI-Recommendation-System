@@ -14,8 +14,6 @@ import About from './pages/About';
 import MusicCategoryPage from './pages/categories/MusicCategoryPage';
 import GameCategoryPage from './pages/categories/GameCategoryPage';
 import MovieCategoryPage from './pages/categories/MovieCategoryPage';
-// import SongRecommendations from './pages/help/SongRecommendations';
-// import GameRecommendations from './pages/help/GameRecommendations';
 import MovieRecommendations from './pages/help/MovieRecommendations.js';
 import NotFound from './pages/NotFound';
 
@@ -30,6 +28,8 @@ import React, { useContext } from 'react';
 import { MovieGenreProvider } from './useContext/movieGenreContext';
 import { MusicGenreProvider } from './useContext/musicGenreContext';
 import { GameGenreProvider } from './useContext/gameGenreContext';
+import { SongRecommendationProvider } from './useContext/songRecommendationsContext';
+import { MovieRecommendationProvider } from './useContext/movieRecommendationsContext';
 
 
 const router = createBrowserRouter(
@@ -40,20 +40,6 @@ const router = createBrowserRouter(
       <Route path="MusicCategoryPage" element={<MusicCategoryPage />} />
       <Route path="GameCategoryPage" element={<GameCategoryPage />} />
       <Route path="MovieCategoryPage" element={<MovieCategoryPage />} />
-
-
-
-      <Route path="help" element={<HelpLayout />}>
-        {/* <Route path="SongRecommendations" element={<SongRecommendations />} /> */}
-        {/* <Route path="GameRecommendations" element={<GameRecommendations />} /> */}
-        <Route path="MovieRecommendations" element={<MovieRecommendations />} />
-      </Route>
-
-
-      {/* <Route path="musicCategories" element={<MusicCategoriesLayout />}>
-        <Route path="SongRecommendations" element={<SongRecommendations />} />
-      </Route> */}
-
       <Route path="*" element={<NotFound />} />
     </Route>
   )
@@ -62,10 +48,14 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-      <MovieGenreProvider>
+     <MovieGenreProvider>
         <MusicGenreProvider>
           <GameGenreProvider>
-          <RouterProvider router={router} />
+            <MovieRecommendationProvider>
+            <SongRecommendationProvider>
+              <RouterProvider router={router} />
+            </SongRecommendationProvider>
+            </MovieRecommendationProvider>
           </GameGenreProvider>
         </MusicGenreProvider>
       </MovieGenreProvider>
