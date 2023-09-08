@@ -1,68 +1,24 @@
 import React, { useState } from 'react';
 import { openai } from '../../config/openaiConfig';
-import { useGameGenre } from '../../useContext/gameGenreContext';
+// import { useGameGenre } from '../../useContext/gameGenreContext';
+import { useGameRecommendation } from '../../useContext/gameRecommendationsContext';
 
 const GameRecommendations = () => {
-  const [recommendations, setRecommendations] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
-  const { gameArr } = useGameGenre()
-  // const songArr = ["action", "racing", "adventure"]
-  const gamesArr = gameArr.join(', ')
-
-  // Function to generate a prompt
-  function generatePrompt(gamesArr) {
-    return `based on ${gamesArr} Only suggest ten games with names, title and year they were released`;
-  }
-
-  // Function to fetch song recommendations
-  async function fetchSongRecommendations() {
-    // Set loading state to true before making the request
-    setIsLoading(true); 
-    console.log([gamesArr])
-
-    try {
-      const response = await openai.completions.create({
-        model: 'text-davinci-003',
-        prompt: generatePrompt(gamesArr),
-        max_tokens: 150,
-        temperature: 0.6,
-      });
-
-      console.log(response)
-      console.log(response.choices[0].text);
-     
-      // when recommendations are separated by line breaks
-      setRecommendations(response.choices[0].text.split('\n')); 
-      
-    } catch (error) {
-      // Handle errors here
-      console.error(error);
-    } finally {
-      // Set loading state to false when the request is complete (success or error)
-      setIsLoading(false);
-    }
-  }
+  const { playtimeRecommendations } = useGameRecommendation()
 
   return (
     <div>
       <h1>My GameLists Playlist</h1>
 
-      {/* Conditionally render a loading indicator */}
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
+      
         <div>
-          {/* Render your content when not loading */}
-            <button className='bg-slate-700 text-white w-fit p-3 my-3'
-              onClick={fetchSongRecommendations}
-              disabled={gamesArr.length === 0}
-            >Fetch My Favorite Games</button>
-          <div>
+         
+          <div className='py-3'>
               <ul>
 
-              {Array.isArray(recommendations) ? (
-                recommendations
+              {Array.isArray(playtimeRecommendations) ? (
+                playtimeRecommendations
                     .map(recommendation => recommendation.trim()) 
                     // Remove completely empty lines
                   .filter(recommendation => recommendation !== '') 
@@ -77,7 +33,6 @@ const GameRecommendations = () => {
 
           </div>
         </div>
-      )}
     </div>
   );
 }

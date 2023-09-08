@@ -14,22 +14,20 @@ import About from './pages/About';
 import MusicCategoryPage from './pages/categories/MusicCategoryPage';
 import GameCategoryPage from './pages/categories/GameCategoryPage';
 import MovieCategoryPage from './pages/categories/MovieCategoryPage';
-import MovieRecommendations from './pages/help/MovieRecommendations.js';
 import NotFound from './pages/NotFound';
 
 
 // Layouts
 import RootLayout from './layouts/RootLayout';
-import HelpLayout from './layouts/HelpLayout';
-// import MusicCategoriesLayout from './layouts/MusicCategoryLayout'
 
 //useContext
 import React, { useContext } from 'react';
 import { MovieGenreProvider } from './useContext/movieGenreContext';
 import { MusicGenreProvider } from './useContext/musicGenreContext';
-import { GameGenreProvider } from './useContext/gameGenreContext';
+import { GameGenreProvider } from './useContext/GameGenreContext';
 import { SongRecommendationProvider } from './useContext/songRecommendationsContext';
 import { MovieRecommendationProvider } from './useContext/movieRecommendationsContext';
+import { GameRecommendationProvider } from './useContext/gameRecommendationsContext';
 
 
 const router = createBrowserRouter(
@@ -53,7 +51,9 @@ function App() {
           <GameGenreProvider>
             <MovieRecommendationProvider>
             <SongRecommendationProvider>
-              <RouterProvider router={router} />
+                <GameRecommendationProvider>
+                <RouterProvider router={router} />
+                </GameRecommendationProvider>
             </SongRecommendationProvider>
             </MovieRecommendationProvider>
           </GameGenreProvider>

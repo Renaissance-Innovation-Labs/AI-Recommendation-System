@@ -1,14 +1,12 @@
 import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
-import { useGameGenre } from "../../../useContext/gameGenreContext"
+import { useGameGenre } from "../../../useContext/GameGenreContext"
+import { useGameRecommendation } from "../../../useContext/gameRecommendationsContext"
 import { useNavigate } from "react-router-dom"
 
 const GameGenre = (props) => {
 
-    // const [musicGenreData, setMusicGenreData] = useState([
-    //     'jazz', 'jazez', 'hiphop', 'rythm', 'blues', 'afrobeat', 'soulmusic', 'gospel', 'metal', 'rock'
-    // ])
     const GameGenreData =[
         'Action', 'Adventure', 'Sports', 'Horror', 'Racing', 'Puzzle', 'Fighting', 'Action Adventure', 'Simulation', 'Platformer'
     ]
@@ -17,6 +15,7 @@ const GameGenre = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
+    const {   fetchGameRecommendations, isLoading } = useGameRecommendation()
 
     const navigate = useNavigate()
 
@@ -76,7 +75,9 @@ const GameGenre = (props) => {
        
         else {
             console.log(gameArr);
+            gameArr.join(', ')
             setGenreList(gameArr)
+            fetchGameRecommendations()
             navigate('/GameCategoryPage')
             props.onHandToggleGameModal()
         }

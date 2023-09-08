@@ -34,10 +34,10 @@ const MusicCategoryComp = () => {
              rounded-xl overflow-hidden md:hidden md:group-hover:flex md:opacity-0  md:hover:opacity-100">
 
                
-                <div className=' flex flex-col justify-center items-center gap-6'>
-                    <h1 className='text-3xl'> Music Catalogue</h1>
+                <div className=' flex flex-col justify-center items-center sm:w-72 md:w-96 gap-6 '>
+                    <h1 className='text-3xl sm:text-lg lg:text-3xl'> Music Catalogue</h1>
 
-                    <button onClick={handleToggleModal} className='bg-red-600 px-3 py-3 rounded-lg text-white text-sm'>
+                    <button onClick={handleToggleModal} className='bg-red-600 px-3 py-3 rounded-lg text-white text-sm w-fit sm:text-xs lg:text-sm'>
                         Show Music Catalogue
                     </button>
               </div>
