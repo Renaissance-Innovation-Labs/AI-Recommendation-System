@@ -15,7 +15,7 @@ const GameGenre = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
-    const {   fetchGameRecommendations, isLoading } = useGameRecommendation()
+    const {   fetchGameRecommendations } = useGameRecommendation()
 
     const navigate = useNavigate()
 
