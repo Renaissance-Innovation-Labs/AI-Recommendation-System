@@ -1,7 +1,7 @@
 import React from "react"
 import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
-import { useGameGenre } from "../../../useContext/GameGenreContext"
+import { useGameGenre } from "../../../useContext/gameGenreContext"
 import { useGameRecommendation } from "../../../useContext/gameRecommendationsContext"
 import { useNavigate } from "react-router-dom"
 

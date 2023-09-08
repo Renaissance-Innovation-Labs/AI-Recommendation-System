@@ -1,4 +1,4 @@
-import { useGameGenre } from "../../useContext/GameGenreContext"
+import { useGameGenre } from "../../useContext/gameGenreContext"
 import GameRecommendations from '../help/GameRecommendations'
 import { Link } from "react-router-dom"
 import gameicon from './images/game-icon.jpg'

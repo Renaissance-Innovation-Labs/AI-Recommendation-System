@@ -1,6 +1,6 @@
 // SongRecommendationContext.js
 import React, { createContext, useContext, useState } from 'react';
-import { useGameGenre } from './GameGenreContext';
+import { useGameGenre } from './gameGenreContext';
 import { openai } from '../config/openaiConfig';
 
 // Create a new context

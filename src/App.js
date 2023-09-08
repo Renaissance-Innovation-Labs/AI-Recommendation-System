@@ -24,7 +24,7 @@ import RootLayout from './layouts/RootLayout';
 import React, { useContext } from 'react';
 import { MovieGenreProvider } from './useContext/movieGenreContext';
 import { MusicGenreProvider } from './useContext/musicGenreContext';
-import { GameGenreProvider } from './useContext/GameGenreContext';
+import { GameGenreProvider } from './useContext/gameGenreContext';
 import { SongRecommendationProvider } from './useContext/songRecommendationsContext';
 import { MovieRecommendationProvider } from './useContext/movieRecommendationsContext';
 import { GameRecommendationProvider } from './useContext/gameRecommendationsContext';
