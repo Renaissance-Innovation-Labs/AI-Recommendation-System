@@ -3,6 +3,10 @@
 
 Recom-Zen-Guide is a personalized recommendation system that empowers users to curate gamelists, music lists, and movie lists based on their individual preferences. This README provides an overview of the project, its features, installation instructions, and usage guidelines.
 
+link to my powerpoint presentation slides:https://docs.google.com/presentation/d/1bza5jkOVHj1hDUoKhp_M8gywhK5_nDBOaFYh7wZKU_4/edit#slide=id.g27d5bf625a5_0_1783
+
+link to my 
+
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
