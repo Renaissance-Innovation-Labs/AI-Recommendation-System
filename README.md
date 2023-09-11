@@ -7,8 +7,6 @@ link to my powerpoint presentation slides:https://docs.google.com/presentation/d
 
 link to the app:https://recom-zen-guide.vercel.app/
 
-link to my 
-
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
