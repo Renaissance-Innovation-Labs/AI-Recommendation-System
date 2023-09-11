@@ -5,6 +5,8 @@ Recom-Zen-Guide is a personalized recommendation system that empowers users to c
 
 link to my powerpoint presentation slides:https://docs.google.com/presentation/d/1bza5jkOVHj1hDUoKhp_M8gywhK5_nDBOaFYh7wZKU_4/edit#slide=id.g27d5bf625a5_0_1783
 
+link to the app:https://recom-zen-guide.vercel.app/
+
 link to my 
 
 ## Table of Contents
