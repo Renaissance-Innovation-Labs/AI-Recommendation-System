@@ -33,7 +33,7 @@ const MovieRecommendations = () => {
         temperature: 0.6,
       });
 
-      console.log(response)
+      // console.log(response)
       console.log(response.choices[0].text);
       console.log(filmArr)
      
@@ -73,11 +73,6 @@ const MovieRecommendations = () => {
             src={loadingicon} alt="loading icon" /></div>
       ) : (
         <div>
-            {/* Render your content when not loading */}
-            {/* <button className='bg-gray-700 text-white w-fit p-3 my-3'
-              onClick={fetchMovieRecommendations}
-              disabled={movieArr.length === 0}
-            >Fetch My Music Lists</button> */}
 
 
 <div className="p-3 space-y-6 w-full">
