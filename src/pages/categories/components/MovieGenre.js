@@ -3,10 +3,14 @@ import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
 import { useMovieGenre } from "../../../useContext/movieGenreContext"
 import { useNavigate } from "react-router-dom"
-import { useMovieRecommendation } from "../../../useContext/movieRecommendationsContext"
 
 const MovieGenre = (props) => {
 
+    
+
+    // const [musicGenreData, setMusicGenreData] = useState([
+    //     'jazz', 'jazez', 'hiphop', 'rythm', 'blues', 'afrobeat', 'soulmusic', 'gospel', 'metal', 'rock'
+    // ])
     const movieGenreData =[
        'Action', 'Commedy', 'Drama', 'Thriller', 'Science Fiction', 'Fantasy', 'Horror', 'Romance', 'Mystery', 'Animation'
     ]
@@ -15,7 +19,6 @@ const MovieGenre = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
-    const { isLoading, fetchMovieRecommendations } = useMovieRecommendation()
 
     const navigate = useNavigate()
 
@@ -77,13 +80,11 @@ const MovieGenre = (props) => {
             setErrorMessage('please select at least 2 genres you like, you are allowed to select up to 3');
         } 
         else {
-            movieArr.join(', ')
-            console.log(movieArr);
+            // console.log(movieArr);
             setGenreList(movieArr)
-            // props.onHandToggleModal()
-            fetchMovieRecommendations()
-            navigate('/MovieCategoryPage')
-
+            navigate('/MovieRecommendations')
+            props.onHandToggleModal()
+            
         }
 
         if (errorMessage) {

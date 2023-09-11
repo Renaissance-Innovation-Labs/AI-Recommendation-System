@@ -75,7 +75,7 @@ const GameGenre = (props) => {
        
         else {
             console.log(gameArr);
-            gameArr.join(', ')
+            // gameArr.join(', ')
             setGenreList(gameArr)
             fetchGameRecommendations()
             navigate('/GameCategoryPage')

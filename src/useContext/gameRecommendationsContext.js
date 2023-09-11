@@ -21,14 +21,14 @@ export function GameRecommendationProvider({ children }) {
   
     // Function to generate a prompt
     function generatePrompt(gamesArr) {
-      return `based on ${gamesArr} Only suggest ten games with names, title and year they were released`;
+      return `based on ${gamesArr} Only suggest ten games with names, title, genre and year they were released`;
     }
   
     // Function to fetch game recommendations
     async function fetchGameRecommendations() {
       // Set loading state to true before making the request
       setIsLoading(true); 
-    //   console.log([gamesArr])
+      // console.log([gamesArr])
   
       try {
         const response = await openai.completions.create({
@@ -40,6 +40,7 @@ export function GameRecommendationProvider({ children }) {
   
         console.log(response)
         console.log(response.choices[0].text);
+        console.log(gamesArr)
        
         // when recommendations are separated by line breaks
         setPlaytimeRecommendations(response.choices[0].text.split('\n')); 
