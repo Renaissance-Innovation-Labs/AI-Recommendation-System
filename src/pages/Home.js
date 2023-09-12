@@ -1,5 +1,5 @@
 import GameCategoryComp from './categories/GameCategoryComp'
-import MusicCategoryComp from './categories/MusicCategoryComp'
+// import MusicCategoryComp from './categories/MusicCategoryComp'
 // import MusicCategoryContainer from './categories/musicCategoryContainer'
 import MovieCategoryComp from './categories/MovieCategoryComp'
 // import { Link } from 'react-router-dom'
@@ -19,7 +19,7 @@ const Home = () => {
                 </h1>
                 <div className="w-full flex flex-col justify-center items-center gap-6 sm:flex-row">
                     
-                    <MusicCategoryComp />
+                    {/* <MusicCategoryComp /> */}
                     
                     <GameCategoryComp />
 

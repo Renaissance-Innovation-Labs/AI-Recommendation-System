@@ -127,20 +127,20 @@ const MovieGenre = (props) => {
                         </div>
                         
                         <div className="flex flex-row flex-wrap gap-1 md:gap-3 md:mt-3">
-                        {movieGenreData.map((movie, index) => (
-                            <button
+                            {movieGenreData.map((movie, index) => (
+                                <button
+                                    
+                                onClick={movieChangeHandler}
+                                data-index={index}
+                                key={index}
+                                className={`rounded-lg border-2 border-solid border-slate-900 text-md px-3 py-2 md:px-8 md:py-2 ${
+                                    movieArr.includes(movieGenreData[index])
+                                        ? 'bg-black text-white'
+                                        : 'hover:bg-gray-300 hover:text-black'
+                                }`}
+                                disabled={movieArr.length >= 4}>{movie}</button>
                                 
-                            onClick={movieChangeHandler}
-                            data-index={index}
-                            key={index}
-                            className={`rounded-lg border-2 border-solid border-slate-900 text-md px-3 py-2 md:px-8 md:py-2 ${
-                                movieArr.includes(movieGenreData[index])
-                                    ? 'bg-black text-white'
-                                    : 'hover:bg-gray-300 hover:text-black'
-                            }`}
-                            disabled={movieArr.length >= 4}>{movie}</button>
-                            
-                        ))}
+                            ))}
                         </div>
                     </div>
 
