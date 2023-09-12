@@ -1,8 +1,6 @@
 import movieposter from './images/movieposter.jpg'
 import MovieGenre from './components/MovieGenre'
 import { useState } from 'react'
-// import React, { useContext } from 'react';
-// import { MusicGenreContext } from '../../useContext/musicGenreContext.js';
 
 
 const MovieCategoryComp = () => {
