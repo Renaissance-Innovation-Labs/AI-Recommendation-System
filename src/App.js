@@ -11,9 +11,9 @@ import {
 // Import your components
 import Home from './pages/Home';
 import About from './pages/About';
-import MusicCategoryPage from './pages/categories/MusicCategoryPage';
-import GameCategoryPage from './pages/categories/GameCategoryPage';
 import MovieRecommendations from './pages/help/MovieRecommendations';
+import GameRecommendations from './pages/help/GameRecommendations';
+import SongRecommendations from './pages/help/SongRecommendations';
 import NotFound from './pages/NotFound';
 
 
@@ -25,8 +25,6 @@ import React, { useContext } from 'react';
 import { MovieGenreProvider } from './useContext/movieGenreContext';
 import { MusicGenreProvider } from './useContext/musicGenreContext';
 import { GameGenreProvider } from './useContext/gameGenreContext';
-import { SongRecommendationProvider } from './useContext/songRecommendationsContext';
-import { GameRecommendationProvider } from './useContext/gameRecommendationsContext';
 
 
 const router = createBrowserRouter(
@@ -34,9 +32,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route path="home" element={<Home />} />
       <Route path="About" element={<About />} />
-      <Route path="MusicCategoryPage" element={<MusicCategoryPage />} />
-      <Route path="GameCategoryPage" element={<GameCategoryPage />} />
       <Route path="MovieRecommendations" element={<MovieRecommendations />} />
+      <Route path="GameRecommendations" element={<GameRecommendations />} />
+      <Route path="SongRecommendations" element={<SongRecommendations/> } />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
@@ -62,13 +60,11 @@ function App() {
 
       <MovieGenreProvider>
           <GameGenreProvider>
-            <GameRecommendationProvider>
+            {/* <GameRecommendationProvider> */}
               <MusicGenreProvider>
-                <SongRecommendationProvider>
                 <RouterProvider router={router} />
-                </SongRecommendationProvider>
               </MusicGenreProvider>
-            </GameRecommendationProvider>
+            {/* </GameRecommendationProvider> */}
           </GameGenreProvider>
         </MovieGenreProvider>
     </>

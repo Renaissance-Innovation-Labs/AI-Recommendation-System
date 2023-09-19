@@ -3,10 +3,6 @@ import closeicon from '../images/icons/closeIcon.svg'
 import { useState } from 'react'
 import { useMusicGenre } from "../../../useContext/musicGenreContext"
 import { useNavigate } from "react-router-dom"
-import { openai } from '../../../config/openaiConfig';
-// import SongRecommendations from "../../help/SongRecommendations"
-// import MusicCategoriesPage from "../MusicCategoryPage"
-import { useSongRecommendation } from '../../../useContext/songRecommendationsContext';
 
 
 const MusicGenre = (props) => {
@@ -21,8 +17,6 @@ const MusicGenre = (props) => {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [clickedButtons, setClickedButtons] = useState([]);
     const { setGenreList } = useMusicGenre()
-    const { isLoading, fetchSongRecommendations } = useSongRecommendation()
-
 
 
     const musicChangeHandler = (event) => {
@@ -76,12 +70,11 @@ const MusicGenre = (props) => {
             setErrorMessage('please select at least 2 genres you like, you are allowed to select up to 3');
         } 
         else {
-            songArr.join(', ')
             console.log(songArr);
             setGenreList(songArr)
-            // props.onHandToggleModal()
-            fetchSongRecommendations()
-            navigate('/MusicCategoryPage')
+            navigate('/SongRecommendations')
+            props.onHandToggleModal()
+           
 
         }
     }
@@ -128,11 +121,6 @@ const MusicGenre = (props) => {
                         ))}
                         </div>
                     </div>
-
-                    {isLoading ? (
-                        <div>Loading...</div>
-                    ) : (
-                  
                         <button
                             type="submit"
                             onClick={handleButtonClick}
@@ -141,12 +129,8 @@ const MusicGenre = (props) => {
                          py-2 self-end mx-3 md:px-8 md:py-2">
                             Submit Genres
                         </button>
-                            
-                    )}
                     
                 </form>
-
-                {/* <SongRecommendations recommendations={recommendations} /> */}
             </div>   
 
     </>

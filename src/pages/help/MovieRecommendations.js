@@ -59,6 +59,10 @@ const MovieRecommendations = () => {
         }
       }
 
+      else {
+        console.log('fetch lost')
+      }
+
       console.log('Effect ended');
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filmArr]); // Dependency array with filmArr
@@ -119,7 +123,7 @@ const MovieRecommendations = () => {
                     <li className='border-b-2 border-b-solid py-1 text-gray-700' key={index}>{recommendation}</li>
                   ))
               ) : (
-                <li>No Game Data available For Now, Wanna See Playlist? Click Button Above</li>
+                <li>No Movie Data available For Now, Wanna See Playlist? Click Button Above</li>
               )}
                 
               </ul>

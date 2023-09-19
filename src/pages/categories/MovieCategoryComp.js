@@ -6,7 +6,6 @@ import { useState } from 'react'
 const MovieCategoryComp = () => {
 
     const [isMovieShown, setIsMovieShown] = useState(false)
-    // const { songArr, updateSongArr } = useContext(MusicGenreContext);
         
         const handleMovieToggleModal = () => {
             setIsMovieShown(true)
@@ -24,12 +23,7 @@ const MovieCategoryComp = () => {
                 <div>
                     <img src={movieposter} alt='music poster' className='w-full h-fit rounded-xl'/>   
                 </div>
-    
-    
-                {/* <div className="hidden group-hover:flex font-bold  w-full h-full absolute top-0 right-0 bottom-0 left-0 cursor-pointer bg-black/30 text-white
-                 flex-col justify-center items-center gap-6 mx-auto opacity-0 transition duration-300 ease-in-out hover:opacity-100
-                 rounded-xl overflow-hidden"> */}
-                
+
                 <div className="flex font-bold  w-full h-full absolute top-0 right-0 bottom-0 left-0 cursor-pointer bg-black/50 text-white
              flex-col justify-center items-center gap-6 mx-auto opacity-100 transition duration-300 ease-in-out
              rounded-xl overflow-hidden md:hidden md:group-hover:flex md:opacity-0  md:hover:opacity-100">
